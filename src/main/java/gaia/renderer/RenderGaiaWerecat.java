@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
@@ -19,8 +20,8 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderGaiaWerecat extends RenderLiving {
@@ -29,8 +30,8 @@ public class RenderGaiaWerecat extends RenderLiving {
 	private static final ResourceLocation texture01 = new ResourceLocation("gaia", "textures/models/Werecat01.png");
 	private static final ResourceLocation texture02 = new ResourceLocation("gaia", "textures/models/alternate/Werecat02.png");
 
-	public RenderGaiaWerecat() {
-		super(new ModelGaiaWerecat(), 0.5F);
+	public RenderGaiaWerecat(RenderManager rend) {
+		super(rend, new ModelGaiaWerecat(), 0.5F);
 		this.setRenderPassModel(new ModelGaiaWerecat());
 	}
 	

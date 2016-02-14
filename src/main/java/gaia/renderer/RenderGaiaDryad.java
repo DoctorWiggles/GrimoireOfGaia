@@ -5,6 +5,7 @@ import gaia.model.ModelGaiaDryad;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
@@ -18,8 +19,8 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderGaiaDryad extends RenderLiving {
@@ -27,8 +28,8 @@ public class RenderGaiaDryad extends RenderLiving {
 	private static final ResourceLocation texture01 = new ResourceLocation("gaia", "textures/models/Dryad01.png");
 	private static final ResourceLocation texture02 = new ResourceLocation("gaia", "textures/models/alternate/Dryad02.png");
 
-	public RenderGaiaDryad() {
-		super(new ModelGaiaDryad(), 0.5F);
+	public RenderGaiaDryad(RenderManager rend) {
+		super(rend, new ModelGaiaDryad(), 0.5F);
 	}
 
 	protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {

@@ -5,6 +5,7 @@ import gaia.model.ModelGaiaSelkie;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
@@ -18,8 +19,8 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderGaiaSelkie extends RenderLiving {
@@ -27,8 +28,8 @@ public class RenderGaiaSelkie extends RenderLiving {
 	private static final ResourceLocation texture01 = new ResourceLocation("gaia", "textures/models/Selkie01.png");
 	private static final ResourceLocation texture02 = new ResourceLocation("gaia", "textures/models/alternate/Selkie02.png");
 
-	public RenderGaiaSelkie() {
-		super(new ModelGaiaSelkie(), 0.5F);
+	public RenderGaiaSelkie(RenderManager rend) {
+		super(rend, new ModelGaiaSelkie(), 0.5F);
 	}
 
 	protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {

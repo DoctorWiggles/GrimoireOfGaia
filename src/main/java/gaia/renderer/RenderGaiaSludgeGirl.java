@@ -3,6 +3,7 @@ package gaia.renderer;
 import gaia.entity.monster.EntityGaiaSludgeGirl;
 import gaia.model.ModelGaiaSludgeGirl;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,8 +12,8 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderGaiaSludgeGirl extends RenderLiving {
@@ -20,8 +21,8 @@ public class RenderGaiaSludgeGirl extends RenderLiving {
 	private static final ResourceLocation hairSludgeGirl = new ResourceLocation("gaia", "textures/models/Sludge_Girl_Hair.png");
 	private static final ResourceLocation texture = new ResourceLocation("gaia", "textures/models/Sludge_Girl.png");
 
-	public RenderGaiaSludgeGirl() {
-		super(new ModelGaiaSludgeGirl(), 0.5F);
+	public RenderGaiaSludgeGirl(RenderManager rend) {
+		super(rend, new ModelGaiaSludgeGirl(), 0.5F);
 		this.setRenderPassModel(new ModelGaiaSludgeGirl());
 	}
 	

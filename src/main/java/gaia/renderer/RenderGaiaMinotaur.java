@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
@@ -19,8 +20,8 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderGaiaMinotaur extends RenderLiving {
@@ -28,8 +29,8 @@ public class RenderGaiaMinotaur extends RenderLiving {
 	private static final ResourceLocation minotaurEyesTexture = new ResourceLocation("gaia", "textures/models/eyes/Eyes_Minotaur.png");
 	private static final ResourceLocation texture = new ResourceLocation("gaia", "textures/models/Minotaur.png");
 
-	public RenderGaiaMinotaur() {
-		super(new ModelGaiaMinotaur(), 0.5F);
+	public RenderGaiaMinotaur(RenderManager rend) {
+		super(rend, new ModelGaiaMinotaur(), 0.5F);
 		this.setRenderPassModel(new ModelGaiaMinotaur());
 	}
 

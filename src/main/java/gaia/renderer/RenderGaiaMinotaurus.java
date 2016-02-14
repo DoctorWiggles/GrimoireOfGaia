@@ -5,6 +5,7 @@ import gaia.model.ModelGaiaMinotaurus;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
@@ -18,8 +19,8 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderGaiaMinotaurus extends RenderLiving {
@@ -27,8 +28,8 @@ public class RenderGaiaMinotaurus extends RenderLiving {
 	private static final ResourceLocation texture01 = new ResourceLocation("gaia", "textures/models/Minotaurus01.png");
 	private static final ResourceLocation texture02 = new ResourceLocation("gaia", "textures/models/alternate/Minotaurus02.png");
 
-	public RenderGaiaMinotaurus() {
-		super(new ModelGaiaMinotaurus(), 0.5F);
+	public RenderGaiaMinotaurus(RenderManager rend) {
+		super(rend, new ModelGaiaMinotaurus(), 0.5F);
 	}
 
 	protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {

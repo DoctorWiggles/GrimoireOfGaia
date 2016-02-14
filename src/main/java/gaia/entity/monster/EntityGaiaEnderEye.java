@@ -88,7 +88,7 @@ public class EntityGaiaEnderEye extends EntityMobBase {
             return false;
         } else {
             Vec3 vec3 = entityplayer.getLook(1.0F).normalize();
-            Vec3 vec31 = Vec3.createVectorHelper(this.posX - entityplayer.posX, this.boundingBox.minY + (double)(this.height / 2.0F) - (entityplayer.posY + (double)entityplayer.getEyeHeight()), this.posZ - entityplayer.posZ);
+            Vec3 vec31 = Vec3.createVectorHelper(this.posX - entityplayer.posX, this.getEntityBoundingBox().minY + (double)(this.height / 2.0F) - (entityplayer.posY + (double)entityplayer.getEyeHeight()), this.posZ - entityplayer.posZ);
             double d0 = vec31.lengthVector();
             vec31 = vec31.normalize();
             double d1 = vec3.dotProduct(vec31);
@@ -166,7 +166,7 @@ public class EntityGaiaEnderEye extends EntityMobBase {
 	}
 
 	protected boolean teleportToEntity(Entity par1Entity) {
-		Vec3 vec3 = Vec3.createVectorHelper(this.posX - par1Entity.posX, this.boundingBox.minY + (double)(this.height / 2.0F) - par1Entity.posY + (double)par1Entity.getEyeHeight(), this.posZ - par1Entity.posZ);
+		Vec3 vec3 = Vec3.createVectorHelper(this.posX - par1Entity.posX, this.getEntityBoundingBox().minY + (double)(this.height / 2.0F) - par1Entity.posY + (double)par1Entity.getEyeHeight(), this.posZ - par1Entity.posZ);
 		vec3 = vec3.normalize();
 		double d0 = 16.0D;
 		double d1 = this.posX + (this.rand.nextDouble() - 0.5D) * 8.0D - vec3.xCoord * d0;
@@ -192,7 +192,7 @@ public class EntityGaiaEnderEye extends EntityMobBase {
 			int k = MathHelper.floor_double(this.posZ);
 			if(this.worldObj.blockExists(i, j, k)) {
 				this.setPosition(this.posX, this.posY, this.posZ);
-				if(this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox)) {
+				if(this.worldObj.getCollidingBoundingBoxes(this, this.getEntityBoundingBox()).isEmpty() && !this.worldObj.isAnyLiquid(this.getEntityBoundingBox())) {
 					flag = true;
 				}
 			}

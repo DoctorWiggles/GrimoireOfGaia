@@ -33,8 +33,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityGaiaWitch extends EntityMobBase implements IRangedAttackMob {
 	private static final Item[] witchDrops = new Item[] { 
@@ -63,7 +63,7 @@ public class EntityGaiaWitch extends EntityMobBase implements IRangedAttackMob {
 		this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(3, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class,  true));
 		this.spawn = 0;
 	}
 
@@ -97,7 +97,7 @@ public class EntityGaiaWitch extends EntityMobBase implements IRangedAttackMob {
 	}
 
 	public void onLivingUpdate() {
-		if(!this.onGround && this.motionY < 0.0D) {
+		if(!this.swingProgress && this.motionY < 0.0D) {
 			this.motionY *= 0.8D;
 		}
 
@@ -195,7 +195,7 @@ public class EntityGaiaWitch extends EntityMobBase implements IRangedAttackMob {
 	public void handleHealthUpdate(byte par1) {
 		if(par1 == 15) {
 			for(int var2 = 0; var2 < this.rand.nextInt(35) + 10; ++var2) {
-				this.worldObj.spawnParticle("witchMagic", this.posX + this.rand.nextGaussian() * 0.12999999523162842D, this.boundingBox.maxY + 0.5D + this.rand.nextGaussian() * 0.12999999523162842D, this.posZ + this.rand.nextGaussian() * 0.12999999523162842D, 0.0D, 0.0D, 0.0D);
+				this.worldObj.spawnParticle("witchMagic", this.posX + this.rand.nextGaussian() * 0.12999999523162842D, this.getEntityBoundingBox().maxY + 0.5D + this.rand.nextGaussian() * 0.12999999523162842D, this.posZ + this.rand.nextGaussian() * 0.12999999523162842D, 0.0D, 0.0D, 0.0D);
 			}
 		} else {
 			super.handleHealthUpdate(par1);

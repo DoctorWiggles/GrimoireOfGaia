@@ -4,7 +4,7 @@ import gaia.Gaia;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
@@ -50,8 +50,8 @@ public class ItemFoodPieMandrake extends ItemFood {
     }
 
 	/*
-	public ItemStack onEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		super.onEaten(par1ItemStack, par2World, par3EntityPlayer);
+	public ItemStack onEaten(ItemStack itemstack, World par2World, EntityPlayer par3EntityPlayer) {
+		super.onEaten(itemstack, par2World, par3EntityPlayer);
 		if(!par2World.isRemote) {
 			par3EntityPlayer.heal(6.0F);
 			par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.nightVision.id, 3600, 0));

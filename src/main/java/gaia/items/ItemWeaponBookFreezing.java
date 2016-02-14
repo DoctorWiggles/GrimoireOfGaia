@@ -4,7 +4,7 @@ import gaia.Gaia;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySnowball;
@@ -18,8 +18,8 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemWeaponBookFreezing extends ItemSword {
 	private float weaponDamage;
@@ -37,12 +37,12 @@ public class ItemWeaponBookFreezing extends ItemSword {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.rare;
+	public EnumRarity getRarity(ItemStack itemstack) {
+		return EnumRarity.RARE;
 	}
 
-	public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4) {
-		par1ItemStack.damageItem(1, par3EntityPlayer);
+	public void onPlayerStoppedUsing(ItemStack itemstack, World par2World, EntityPlayer par3EntityPlayer, int par4) {
+		itemstack.damageItem(1, par3EntityPlayer);
 		par3EntityPlayer.addExhaustion(5.0F);
 		par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 		if(!par2World.isRemote) {
@@ -50,22 +50,22 @@ public class ItemWeaponBookFreezing extends ItemSword {
 		}
 	}
 
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocal("potion.moveSlowdown") + " II" + " (0:04)");
 	}
 
-	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving) {
-		par1ItemStack.damageItem(1, par3EntityLiving);
+	public boolean hitEntity(ItemStack itemstack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving) {
+		itemstack.damageItem(1, par3EntityLiving);
 		par2EntityLiving.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 80, 1));
 		return true;
 	}
 
-	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
-		return EnumAction.bow;
+	public EnumAction getItemUseAction(ItemStack itemstack) {
+		return EnumAction.BOW;
 	}
 
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-		return Items.book == par2ItemStack.getItem()?true:super.getIsRepairable(par1ItemStack, par2ItemStack);
+	public boolean getIsRepairable(ItemStack itemstack, ItemStack par2ItemStack) {
+		return Items.book == par2ItemStack.getItem()?true:super.getIsRepairable(itemstack, par2ItemStack);
 	}
 
 	public void registerIcons(IIconRegister iconRegister) {

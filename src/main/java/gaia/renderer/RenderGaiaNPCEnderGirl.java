@@ -4,14 +4,15 @@ import gaia.entity.passive.EntityGaiaNPCEnderGirl;
 import gaia.model.ModelGaiaNPCEnderGirl;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderGaiaNPCEnderGirl extends RenderLiving {
@@ -19,8 +20,8 @@ public class RenderGaiaNPCEnderGirl extends RenderLiving {
 	private static final ResourceLocation endergirlEyesTexture = new ResourceLocation("gaia", "textures/models/eyes/Eyes_Ender_Girl.png");
 	private static final ResourceLocation texture = new ResourceLocation("gaia", "textures/models/Ender_Girl.png");
 
-	public RenderGaiaNPCEnderGirl() {
-		super(new ModelGaiaNPCEnderGirl(), 0.5F);
+	public RenderGaiaNPCEnderGirl(RenderManager rend) {
+		super(rend, new ModelGaiaNPCEnderGirl(), 0.5F);
 		this.setRenderPassModel(new ModelGaiaNPCEnderGirl());
 	}
 

@@ -40,7 +40,7 @@ public class TileRenderBustValkyrie extends TileEntitySpecialRenderer {
 		GL11.glPopMatrix();
 	}
 
-	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float f) {
+	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float f, int destroyStage) {
 		this.renderModel((TileEntityBustValkyrie)tileentity, d0, d1, d2, f);
 	}
 }

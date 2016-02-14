@@ -5,15 +5,15 @@ import gaia.Gaia;
 import java.util.List;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMiscSoulFiery extends Item {
 	String texture;
@@ -25,12 +25,12 @@ public class ItemMiscSoulFiery extends Item {
 		this.setCreativeTab(Gaia.tabGaia);
 	}
 
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocalFormatted("text.GrimoireOfGaia.FuelForSeconds", new Object[]{Integer.valueOf(1000)}));
 		par3List.add(StatCollector.translateToLocal("item.GrimoireOfGaia.MiscSoulFiery.desc"));
 	}
 
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
+	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
 		if(par7 == 0) {
 			--par5;
 		}
@@ -55,11 +55,11 @@ public class ItemMiscSoulFiery extends Item {
 			++par4;
 		}
 
-		if(!par2EntityPlayer.capabilities.isCreativeMode) {
-			--par1ItemStack.stackSize;
+		if(!player.capabilities.isCreativeMode) {
+			--itemstack.stackSize;
 		}
 
-		if(!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack)) {
+		if(!player.canPlayerEdit(par4, par5, par6, par7, itemstack)) {
 			return false;
 		} else {
 			Block i1 = par3World.getBlock(par4, par5, par6);
@@ -68,7 +68,7 @@ public class ItemMiscSoulFiery extends Item {
 				par3World.setBlock(par4, par5, par6, Blocks.flowing_lava);
 			}
 
-			par1ItemStack.damageItem(1, par2EntityPlayer);
+			itemstack.damageItem(1, player);
 			return true;
 		}
 	}

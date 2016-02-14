@@ -76,7 +76,8 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 	protected void updateAITick() {
 		if(this.randomTickDivider-- <= 0) {
 			this.randomTickDivider = 70 + this.rand.nextInt(50);
-			this.villageObj = this.worldObj.villageCollectionObj.findNearestVillage(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ), 32);
+			//this.villageObj = this.worldObj.villageCollectionObj.findNearestVillage(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ), 32);
+			this.villageObj = this.worldObj.villageCollectionObj.getNearestVillage(this.getPosition(), 32);
 			if(this.villageObj == null) {
 				this.detachHome();
 			} else {
@@ -91,7 +92,8 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 						while (iterator.hasNext()) {
 							MerchantRecipe merchantrecipe = (MerchantRecipe)iterator.next();
 							if (merchantrecipe.isRecipeDisabled()) {
-								merchantrecipe.func_82783_a(this.rand.nextInt(6) + this.rand.nextInt(6) + 2);
+								//merchantrecipe.func_82783_a(this.rand.nextInt(6) + this.rand.nextInt(6) + 2);
+								merchantrecipe.increaseMaxTradeUses(this.rand.nextInt(6) + this.rand.nextInt(6) + 2);
 							}
 						}
 					}
@@ -107,23 +109,23 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 		super.updateAITick();
 	}
 	@Override
-	public boolean interact(EntityPlayer par1EntityPlayer) {
-		ItemStack var2 = par1EntityPlayer.inventory.getCurrentItem();
+	public boolean interact(EntityPlayer player) {
+		ItemStack var2 = player.inventory.getCurrentItem();
 		boolean var3 = var2 != null && var2.getItem() == Items.spawn_egg;
 		if(!var3 && this.isEntityAlive() && !this.isTrading() && !this.isChild()) {
 			if(!this.worldObj.isRemote) {
-				this.setCustomer(par1EntityPlayer);
+				this.setCustomer(player);
 				String name = this.getCustomNameTag();
 				if(null == name || name.length() < 1) {
 					name = this.getCommandSenderName();
 				}
 
-				par1EntityPlayer.displayGUIMerchant(this, name);
+				player.displayGUIMerchant(this, name);
 			}
 
 			return true;
 		} else {
-			return super.interact(par1EntityPlayer);
+			return super.interact(player);
 		}
 	}
 
@@ -169,7 +171,7 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 			this.wealth += var1.getItemToBuy().stackSize;
 		}
 	}
-	public void func_110297_a_(ItemStack par1ItemStack) { }
+	public void func_110297_a_(ItemStack itemstack) { }
 	@Override
 	public MerchantRecipeList getRecipes(EntityPlayer var1) {
 		if(this.buyingList == null) {

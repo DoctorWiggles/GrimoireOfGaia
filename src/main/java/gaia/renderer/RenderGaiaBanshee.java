@@ -4,6 +4,7 @@ import gaia.entity.monster.EntityGaiaBanshee;
 import gaia.model.ModelGaiaBanshee;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
@@ -11,8 +12,8 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderGaiaBanshee extends RenderLiving {
@@ -20,8 +21,8 @@ public class RenderGaiaBanshee extends RenderLiving {
 	private static final ResourceLocation bansheeEyesTexture = new ResourceLocation("gaia", "textures/models/Banshee.png");
 	private static final ResourceLocation texture = new ResourceLocation("gaia", "textures/models/Banshee.png");
 
-	public RenderGaiaBanshee() {
-		super(new ModelGaiaBanshee(), 0.5F);
+	public RenderGaiaBanshee(RenderManager rend) {
+		super(rend, new ModelGaiaBanshee(), 0.5F);
 		this.setRenderPassModel(new ModelGaiaBanshee());
 	}
 

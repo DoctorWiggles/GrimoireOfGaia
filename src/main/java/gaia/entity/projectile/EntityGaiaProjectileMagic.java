@@ -9,8 +9,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityGaiaProjectileMagic extends EntityFireball {
 
@@ -50,11 +50,11 @@ public class EntityGaiaProjectileMagic extends EntityFireball {
     			{
     				byte byte0 = 0;
 
-    				if (this.worldObj.difficultySetting == EnumDifficulty.NORMAL)
+    				if (this.worldObj.getDifficulty() == EnumDifficulty.NORMAL)
     				{
     					byte0 = 7;
     				}
-    				else if (this.worldObj.difficultySetting == EnumDifficulty.HARD)
+    				else if (this.worldObj.getDifficulty() == EnumDifficulty.HARD)
     				{
     					byte0 = 15;
     				}

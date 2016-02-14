@@ -16,13 +16,14 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityGaiaCobbleGolem extends EntityMobDay {
 	private float field_70926_e;
@@ -35,7 +36,7 @@ public class EntityGaiaCobbleGolem extends EntityMobDay {
 		this.experienceValue = EntityAttributes.experienceValue1;
 		this.stepHeight = 1.0F;
 		this.isImmuneToFire = true;
-		this.getNavigator().setAvoidsWater(true);
+		((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
 		this.tasks.addTask(1, new EntityAIGaiaAttackOnCollide(this, 1.0D, true));
 		this.tasks.addTask(2, new EntityAIWander(this, 0.5D));
 		this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
@@ -173,7 +174,7 @@ public class EntityGaiaCobbleGolem extends EntityMobDay {
 			int var3 = MathHelper.floor_double(this.posZ);
 			Block var4 = this.worldObj.getBlock(var1, var2, var3);
 			if(var4 != Blocks.air) {
-				this.worldObj.spawnParticle("blockcrack_" + Block.getIdFromBlock(var4) + "_" + this.worldObj.getBlockMetadata(var1, var2, var3), this.posX + ((double)this.rand.nextFloat() - 0.5D) * (double)this.width, this.boundingBox.minY + 0.1D, this.posZ + ((double)this.rand.nextFloat() - 0.5D) * (double)this.width, 4.0D * ((double)this.rand.nextFloat() - 0.5D), 0.5D, ((double)this.rand.nextFloat() - 0.5D) * 4.0D);
+				this.worldObj.spawnParticle("blockcrack_" + Block.getIdFromBlock(var4) + "_" + this.worldObj.getBlockMetadata(var1, var2, var3), this.posX + ((double)this.rand.nextFloat() - 0.5D) * (double)this.width, this.getEntityBoundingBox().minY + 0.1D, this.posZ + ((double)this.rand.nextFloat() - 0.5D) * (double)this.width, 4.0D * ((double)this.rand.nextFloat() - 0.5D), 0.5D, ((double)this.rand.nextFloat() - 0.5D) * 4.0D);
 			}
 		}
 

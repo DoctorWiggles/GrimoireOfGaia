@@ -4,7 +4,7 @@ import gaia.Gaia;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -24,8 +24,8 @@ import net.minecraft.world.World;
 
 import com.google.common.collect.Multimap;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemWeaponBookWither extends ItemSword {
 	private float weaponDamage;
@@ -43,8 +43,8 @@ public class ItemWeaponBookWither extends ItemSword {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.rare;
+	public EnumRarity getRarity(ItemStack itemstack) {
+		return EnumRarity.RARE;
 	}
 	
 	@Override
@@ -54,8 +54,8 @@ public class ItemWeaponBookWither extends ItemSword {
 		return multimap;
 	}
 
-	public void onPlayerStoppedUsing(ItemStack par1ItemStack, World world, EntityPlayer entityplayer, int par4) {
-		par1ItemStack.damageItem(27, entityplayer);
+	public void onPlayerStoppedUsing(ItemStack itemstack, World world, EntityPlayer entityplayer, int par4) {
+		itemstack.damageItem(27, entityplayer);
 		entityplayer.addExhaustion(5.0F);
 		world.playSoundAtEntity(entityplayer, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 		if(!world.isRemote) {
@@ -69,31 +69,31 @@ public class ItemWeaponBookWither extends ItemSword {
 		}
 	}
 	
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocal("potion.wither") + " (0:04)");
 	}
 
-	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving) {
-		par1ItemStack.damageItem(1, par3EntityLiving);
+	public boolean hitEntity(ItemStack itemstack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving) {
+		itemstack.damageItem(1, par3EntityLiving);
 		par2EntityLiving.addPotionEffect(new PotionEffect(Potion.wither.id, 80, 0));
 		return true;
 	}
 	
-	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
-		return EnumAction.bow;
+	public EnumAction getItemUseAction(ItemStack itemstack) {
+		return EnumAction.BOW;
 	}
 
-	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+	public int getMaxItemUseDuration(ItemStack itemstack) {
 		return 72000;
 	}
 
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
-		return par1ItemStack;
+	public ItemStack onItemRightClick(ItemStack itemstack, World par2World, EntityPlayer par3EntityPlayer) {
+		par3EntityPlayer.setItemInUse(itemstack, this.getMaxItemUseDuration(itemstack));
+		return itemstack;
 	}
 
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-		return Items.book == par2ItemStack.getItem()?true:super.getIsRepairable(par1ItemStack, par2ItemStack);
+	public boolean getIsRepairable(ItemStack itemstack, ItemStack par2ItemStack) {
+		return Items.book == par2ItemStack.getItem()?true:super.getIsRepairable(itemstack, par2ItemStack);
 	}
 
 	public void registerIcons(IIconRegister iconRegister) {

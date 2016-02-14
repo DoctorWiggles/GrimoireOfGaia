@@ -23,34 +23,34 @@ public class EntityGaiaProjectileSmallFireball extends EntitySmallFireball {
         this.setSize(0.3125F, 0.3125F);
 	}
 
-	protected void onImpact(MovingObjectPosition par1MovingObjectPosition) {
+	protected void onImpact(MovingObjectPosition mop) {
 		if(!this.worldObj.isRemote) {
-			if(par1MovingObjectPosition.entityHit != null) {
-				if(!par1MovingObjectPosition.entityHit.isImmuneToFire() && par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeFireballDamage(this, this.shootingEntity), 5.0F)) {
-					par1MovingObjectPosition.entityHit.setFire(4);
+			if(mop.entityHit != null) {
+				if(!mop.entityHit.isImmuneToFire() && mop.entityHit.attackEntityFrom(DamageSource.causeFireballDamage(this, this.shootingEntity), 5.0F)) {
+					mop.entityHit.setFire(4);
 				}
-			} else {
-				int var2 = par1MovingObjectPosition.blockX;
-				int var3 = par1MovingObjectPosition.blockY;
-				int var4 = par1MovingObjectPosition.blockZ;
+			} else {				
+				int var2 = mop.getBlockPos().getX();
+				int var3 = mop.getBlockPos().getY();
+				int var4 = mop.getBlockPos().getZ();
 				
-				switch(par1MovingObjectPosition.sideHit) {
-				case 0:
+				switch(mop.sideHit) {
+				case DOWN:
 					--var3;
 					break;
-				case 1:
+				case UP:
 					++var3;
 					break;
-				case 2:
+				case EAST:
 					--var4;
 					break;
-				case 3:
+				case WEST:
 					++var4;
 					break;
-				case 4:
+				case NORTH:
 					--var2;
 					break;
-				case 5:
+				case SOUTH:
 					++var2;
 				}
 			}

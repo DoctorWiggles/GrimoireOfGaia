@@ -4,7 +4,7 @@ import gaia.Gaia;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -15,8 +15,8 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.StatCollector;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemWeaponBookBattle extends ItemSword {
 	private float weaponDamage;
@@ -34,22 +34,22 @@ public class ItemWeaponBookBattle extends ItemSword {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.rare;
+	public EnumRarity getRarity(ItemStack itemstack) {
+		return EnumRarity.RARE;
 	}
 
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocal("potion.weakness") + " (0:04)");
 	}
 
-	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving) {
-		par1ItemStack.damageItem(1, par3EntityLiving);
+	public boolean hitEntity(ItemStack itemstack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving) {
+		itemstack.damageItem(1, par3EntityLiving);
 		par2EntityLiving.addPotionEffect(new PotionEffect(Potion.weakness.id, 80, 0));
 		return true;
 	}
 
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-		return Items.book == par2ItemStack.getItem()?true:super.getIsRepairable(par1ItemStack, par2ItemStack);
+	public boolean getIsRepairable(ItemStack itemstack, ItemStack par2ItemStack) {
+		return Items.book == par2ItemStack.getItem()?true:super.getIsRepairable(itemstack, par2ItemStack);
 	}
 
 	public void registerIcons(IIconRegister iconRegister) {

@@ -4,15 +4,15 @@ import gaia.Gaia;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMiscPage extends Item {
 	String texture;
@@ -24,11 +24,11 @@ public class ItemMiscPage extends Item {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.uncommon;
+	public EnumRarity getRarity(ItemStack itemstack) {
+		return EnumRarity.UNCOMMON;
 	}
 	
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List par3List, boolean par4) {
 		par3List.add((EnumChatFormatting.ITALIC + StatCollector.translateToLocal("item.GrimoireOfGaia.MiscPage.desc")));
 	}
 

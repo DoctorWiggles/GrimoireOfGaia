@@ -4,7 +4,7 @@ import gaia.Gaia;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,8 +15,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBagBook extends Item {
 	String texture;
@@ -30,11 +30,11 @@ public class ItemBagBook extends Item {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.rare;
+	public EnumRarity getRarity(ItemStack itemstack) {
+		return EnumRarity.RARE;
 	}
 
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocal("text.GrimoireOfGaia.RightClickUse.desc"));
 	}
 
@@ -46,8 +46,9 @@ public class ItemBagBook extends Item {
 		ItemStack book = Items.enchanted_book.getEnchantedItemStack(new EnchantmentData(enchantment, k));
 		return book;
 	}
-
+	
 	public void registerIcons(IIconRegister iconRegister) {
 		this.itemIcon = iconRegister.registerIcon("gaia:" + this.texture);
 	}
+	
 }

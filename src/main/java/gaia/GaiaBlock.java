@@ -16,7 +16,7 @@ import gaia.tileentity.TileEntityDollMaid;
 import gaia.tileentity.TileEntityDollSlimeGirl;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class GaiaBlock {
 	public static final String modid = "GrimoireOfGaia";
@@ -35,13 +35,15 @@ public class GaiaBlock {
 	}
 
 	public static void addBlocks() {
-		BustSphinx = (new BlockBustSphinx(Material.rock)).setBlockTextureName("Gaia:Icon_Bust");
-		BustValkyrie = (new BlockBustValkyrie(Material.rock)).setBlockTextureName("Gaia:Icon_Bust");
-		BustVampire = (new BlockBustVampire(Material.rock)).setBlockTextureName("Gaia:Icon_Bust");
-		DollCreeperGirl = (new BlockDollCreeperGirl(Material.cloth)).setBlockTextureName("Gaia:Icon_Doll");
-		DollEnderGirl = (new BlockDollEnderGirl(Material.cloth)).setBlockTextureName("Gaia:Icon_Doll");
-		DollSlimeGirl = (new BlockDollSlimeGirl(Material.cloth)).setBlockTextureName("Gaia:Icon_Doll");
-		DollMaid = (new BlockDollMaid(Material.cloth)).setBlockTextureName("Gaia:Icon_Doll");
+		
+		BustSphinx = (new BlockBustSphinx(Material.rock));//.setBlockTextureName("Gaia:Icon_Bust");
+		BustValkyrie = (new BlockBustValkyrie(Material.rock));//.setBlockTextureName("Gaia:Icon_Bust");
+		BustVampire = (new BlockBustVampire(Material.rock));//.setBlockTextureName("Gaia:Icon_Bust");
+		DollCreeperGirl = (new BlockDollCreeperGirl(Material.cloth));//.setBlockTextureName("Gaia:Icon_Doll");
+		DollEnderGirl = (new BlockDollEnderGirl(Material.cloth));//.setBlockTextureName("Gaia:Icon_Doll");
+		DollSlimeGirl = (new BlockDollSlimeGirl(Material.cloth));//.setBlockTextureName("Gaia:Icon_Doll");
+		DollMaid = (new BlockDollMaid(Material.cloth));//.setBlockTextureName("Gaia:Icon_Doll");
+		
 	}
 
 //	public static void addRecipes() {}

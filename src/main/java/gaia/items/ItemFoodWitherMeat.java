@@ -6,7 +6,7 @@ import gaia.GaiaItem;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -26,12 +26,12 @@ public class ItemFoodWitherMeat extends ItemFood {
 		this.setCreativeTab(Gaia.tabGaia);
 	}
 
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocal("potion.hunger") + " (0:30)");
 		par3List.add(StatCollector.translateToLocal("potion.wither") + " (0:10)");
 	}
 
-	protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+	protected void onFoodEaten(ItemStack itemstack, World par2World, EntityPlayer par3EntityPlayer) {
 		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.hunger.id, 600, 0));
 		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.wither.id, 200, 0));
 	}

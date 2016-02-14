@@ -2,9 +2,9 @@ package gaia.items;
 
 import gaia.GaiaItem;
 import net.minecraft.item.ItemStack;
-import cpw.mods.fml.common.IFuelHandler;
+import net.minecraftforge.fml.common.IFuelHandler;
 
-public class GaiaItemHandlerFuel implements IFuelHandler {
+public class GaiaItemHandlerFuel implements IFuelHandler{
 
 	//20 = 1 second
 	public int getBurnTime(ItemStack fuel) {

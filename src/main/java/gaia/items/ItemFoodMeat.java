@@ -1,7 +1,7 @@
 package gaia.items;
 
 import gaia.Gaia;
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.item.ItemFood;
 
 public class ItemFoodMeat extends ItemFood {

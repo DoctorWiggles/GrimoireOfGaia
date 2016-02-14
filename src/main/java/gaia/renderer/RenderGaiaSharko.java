@@ -5,6 +5,7 @@ import gaia.model.ModelGaiaSharko;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
@@ -18,16 +19,16 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderGaiaSharko extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation("gaia", "textures/models/Sharko.png");
 
-	public RenderGaiaSharko() {
-		super(new ModelGaiaSharko(), 0.5F);
+	public RenderGaiaSharko(RenderManager rend) {
+		super(rend, new ModelGaiaSharko(), 0.5F);
 	}
 
 	protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {

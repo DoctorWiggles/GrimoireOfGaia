@@ -4,7 +4,7 @@ import gaia.Gaia;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
@@ -12,8 +12,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMiscBook extends Item {
 	String texture;
@@ -26,37 +26,37 @@ public class ItemMiscBook extends Item {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.rare;
+	public EnumRarity getRarity(ItemStack itemstack) {
+		return EnumRarity.RARE;
 	}
 
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocalFormatted("text.GrimoireOfGaia.GainLevels", new Object[]{Integer.valueOf(10)}));
 	}
 
-	public ItemStack onEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+	public ItemStack onEaten(ItemStack itemstack, World par2World, EntityPlayer par3EntityPlayer) {
 		if(!par3EntityPlayer.capabilities.isCreativeMode) {
-			--par1ItemStack.stackSize;
+			--itemstack.stackSize;
 		}
 
 		if(!par2World.isRemote) {
 			par3EntityPlayer.addExperienceLevel(10);
 		}
 
-		return par1ItemStack;
+		return itemstack;
 	}
 
-	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+	public int getMaxItemUseDuration(ItemStack itemstack) {
 		return 32;
 	}
 
-	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
-		return EnumAction.bow;
+	public EnumAction getItemUseAction(ItemStack itemstack) {
+		return EnumAction.BOW;
 	}
 
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
-		return par1ItemStack;
+	public ItemStack onItemRightClick(ItemStack itemstack, World par2World, EntityPlayer par3EntityPlayer) {
+		par3EntityPlayer.setItemInUse(itemstack, this.getMaxItemUseDuration(itemstack));
+		return itemstack;
 	}
 
 	public void registerIcons(IIconRegister iconRegister) {

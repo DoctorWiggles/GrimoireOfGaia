@@ -23,7 +23,7 @@ public abstract class EntityMobDay extends EntityMobBase {
 	//This method is getting call several million times per second
 	public boolean getCanSpawnHere() {
 		int i = MathHelper.floor_double(this.posX);
-		int j = MathHelper.floor_double(this.boundingBox.minY);
+		int j = MathHelper.floor_double(this.getEntityBoundingBox().minY);
 		int k = MathHelper.floor_double(this.posZ);
 		boolean[] spawnBlocks = new boolean[4096];
 		spawnBlocks[Block.grass.blockID] = true;
@@ -33,14 +33,14 @@ public abstract class EntityMobDay extends EntityMobBase {
 		spawnBlocks[Block.snow.blockID] = true;
 		spawnBlocks[43] = true;
 		int var1 = this.worldObj.getBlockId(i, j - 1, k);
-		return spawnBlocks[var1] && this.posY > 60.0D && this.worldObj.getBlockLightValue(i, j, k) >= 7 && this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox) && this.worldObj.getChunkFromBlockCoords(i, k).getBlockLightValue(i & 15, j, k & 15, 15) < 7;
+		return spawnBlocks[var1] && this.posY > 60.0D && this.worldObj.getBlockLightValue(i, j, k) >= 7 && this.worldObj.checkNoEntityCollision(this.getEntityBoundingBox()) && this.worldObj.getCollidingBoundingBoxes(this, this.getEntityBoundingBox()).isEmpty() && !this.worldObj.isAnyLiquid(this.getEntityBoundingBox()) && this.worldObj.getChunkFromBlockCoords(i, k).getBlockLightValue(i & 15, j, k & 15, 15) < 7;
 	}
 	*/
 	
 	@Override
 	public boolean getCanSpawnHere() {
 		int i = MathHelper.floor_double(this.posX);
-		int j = MathHelper.floor_double(this.boundingBox.minY);
+		int j = MathHelper.floor_double(this.getEntityBoundingBox().minY);
 		int k = MathHelper.floor_double(this.posZ);
 
 		Block var1 = this.worldObj.getBlock(i, j - 1, k);
@@ -48,8 +48,8 @@ public abstract class EntityMobDay extends EntityMobBase {
 			// also reorder this part, getCollidingBoundingBoxes and checkNoEntityCollisions and isAnyLiquid are really expensive
 			return this.posY > 60.0D && this.worldObj.getBlockLightValue(i, j, k) >= 7
 					&& this.worldObj.getChunkFromBlockCoords(i, k).getBlockLightValue(i & 15, j, k & 15, 15) < 7 //what does this achieve, there are methods on world to get the block light level without timed daylight
-					&& this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty()
-					&& !this.worldObj.isAnyLiquid(this.boundingBox);
+					&& this.worldObj.checkNoEntityCollision(this.getEntityBoundingBox()) && this.worldObj.getCollidingBoundingBoxes(this, this.getEntityBoundingBox()).isEmpty()
+					&& !this.worldObj.isAnyLiquid(this.getEntityBoundingBox());
 		}
 		return false;
 	}

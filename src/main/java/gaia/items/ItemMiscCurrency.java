@@ -4,7 +4,7 @@ import gaia.Gaia;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -12,8 +12,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMiscCurrency extends Item {
 	String texture;
@@ -26,12 +26,12 @@ public class ItemMiscCurrency extends Item {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.uncommon;
+	public EnumRarity getRarity(ItemStack itemstack) {
+		return EnumRarity.UNCOMMON;
 	}
 	
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		if (par1ItemStack.getItemDamage() == 1) {
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List par3List, boolean par4) {
+		if (itemstack.getItemDamage() == 1) {
 			par3List.add(StatCollector.translateToLocal("item.GrimoireOfGaia.MiscCurrency.desc"));
 		}
 	}

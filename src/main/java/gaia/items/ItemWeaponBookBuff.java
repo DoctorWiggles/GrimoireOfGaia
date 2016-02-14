@@ -4,7 +4,7 @@ import gaia.Gaia;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -21,8 +21,8 @@ import net.minecraft.world.World;
 
 import com.google.common.collect.Multimap;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemWeaponBookBuff extends Item {
 	private float weaponDamage;
@@ -38,8 +38,8 @@ public class ItemWeaponBookBuff extends Item {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.epic;
+	public EnumRarity getRarity(ItemStack itemstack) {
+		return EnumRarity.EPIC;
 	}
 
 	public Multimap getItemAttributeModifiers() {
@@ -48,14 +48,14 @@ public class ItemWeaponBookBuff extends Item {
 		return multimap;
 	}
 
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocal("potion.damageBoost") + " (1:00)");
 		par3List.add(StatCollector.translateToLocal("potion.resistance") + " (1:00)");
 		par3List.add(StatCollector.translateToLocal("potion.regeneration") + " (IV)" + " (0:04)");
 	}
 
-	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving) {
-		par1ItemStack.damageItem(1, par3EntityLiving);
+	public boolean hitEntity(ItemStack itemstack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving) {
+		itemstack.damageItem(1, par3EntityLiving);
 		par2EntityLiving.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 600, 0));
 		par2EntityLiving.addPotionEffect(new PotionEffect(Potion.resistance.id, 600, 0));
 		par2EntityLiving.addPotionEffect(new PotionEffect(Potion.regeneration.id, 80, 3));
@@ -66,21 +66,21 @@ public class ItemWeaponBookBuff extends Item {
 		return true;
 	}
 
-	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
+	public EnumAction getItemUseAction(ItemStack itemstack) {
 		return EnumAction.block;
 	}
 
-	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+	public int getMaxItemUseDuration(ItemStack itemstack) {
 		return 72000;
 	}
 
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
-		return par1ItemStack;
+	public ItemStack onItemRightClick(ItemStack itemstack, World par2World, EntityPlayer par3EntityPlayer) {
+		par3EntityPlayer.setItemInUse(itemstack, this.getMaxItemUseDuration(itemstack));
+		return itemstack;
 	}
 
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-		return Items.book == par2ItemStack.getItem()?true:super.getIsRepairable(par1ItemStack, par2ItemStack);
+	public boolean getIsRepairable(ItemStack itemstack, ItemStack par2ItemStack) {
+		return Items.book == par2ItemStack.getItem()?true:super.getIsRepairable(itemstack, par2ItemStack);
 	}
 
 	public void registerIcons(IIconRegister iconRegister) {

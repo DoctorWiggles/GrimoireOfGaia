@@ -4,7 +4,7 @@ import gaia.Gaia;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -14,8 +14,8 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemAccessoryRingNight extends Item {
 	String texture;
@@ -29,26 +29,26 @@ public class ItemAccessoryRingNight extends Item {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack par1ItemStack) {
+	public boolean hasEffect(ItemStack itemstack) {
 		return true;
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.epic;
+	public EnumRarity getRarity(ItemStack itemstack) {
+		return EnumRarity.EPIC;
 	}
 
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocal("potion.nightVision"));
 	}
 
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-		super.onUpdate(par1ItemStack, par2World, par3Entity, par4, par5);
+	public void onUpdate(ItemStack itemstack, World par2World, Entity par3Entity, int par4, boolean par5) {
+		super.onUpdate(itemstack, par2World, par3Entity, par4, par5);
 		EntityPlayer player = (EntityPlayer)par3Entity;
 
 		for(int i = 0; i < 9; ++i) {
-			if(player.inventory.getStackInSlot(i) == par1ItemStack) {
-				this.doEffect(player, par1ItemStack);
+			if(player.inventory.getStackInSlot(i) == itemstack) {
+				this.doEffect(player, itemstack);
 				break;
 			}
 		}
@@ -58,7 +58,9 @@ public class ItemAccessoryRingNight extends Item {
 		player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 0, 0));
 	}
 
+	
 	public void registerIcons(IIconRegister iconRegister) {
 		this.itemIcon = iconRegister.registerIcon("gaia:" + this.texture);
 	}
+	
 }

@@ -1,37 +1,45 @@
-****************************
- Powered By MCP:             
- http://modcoderpack.com/    
- Searge, ProfMobius, Fesh0r, 
- R4wk, ZeuX, IngisKahn, bspkrs
- MCP Data version : unknown
-****************************
-:extractMcpData
+This set of MCP mappings was designed for MC 1.8.8. Use at your own peril.This set of MCP mappings was designed for MC 1.8.8. Use at your own peril.
+
+#################################################
+         ForgeGradle 2.1-SNAPSHOT-75bb646        
+  https://github.com/MinecraftForge/ForgeGradle  
+#################################################
+               Powered by MCP unknown               
+             http://modcoderpack.com             
+         by: Searge, ProfMobius, Fesh0r,         
+         R4wk, ZeuX, IngisKahn, bspkrs           
+#################################################
+:deobfCompileDummyTask
+:deobfProvidedDummyTask
 :getVersionJson
-:extractUserDev
+:extractUserdev
+:extractDependencyATs SKIPPED
+:extractMcpData SKIPPED
+:extractMcpMappings
 :genSrgs SKIPPED
-:extractNatives
-:getAssetsIndex
-:getAssets
-:makeStart
-[ant:javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
-[ant:javac] 1 warning
-:downloadMcpTools SKIPPED
 :downloadClient SKIPPED
 :downloadServer SKIPPED
+:splitServerJar SKIPPED
 :mergeJars SKIPPED
-:deobfuscateJar SKIPPED
-:decompile SKIPPED
-:processSources SKIPPED
-:remapJar SKIPPED
-:extractMinecraftSrc SKIPPED
-:recompMinecraft SKIPPED
-:repackMinecraft SKIPPED
+:deobfMcSRG SKIPPED
+:decompileMc SKIPPED
+:fixMcSources SKIPPED
+:applySourcePatches
+:remapMcSources SKIPPED
+:recompileMc SKIPPED
+:extractNatives SKIPPED
+:getAssetIndex UP-TO-DATE
+:getAssets
+Current status: 527/734   71%
+:makeStart
 :setupDecompWorkspace
 :eclipseClasspath
 :eclipseJdt
 :eclipseProject
+:makeEclipseCleanRunClient
+:makeEclipseCleanRunServer
 :eclipse
 
 BUILD SUCCESSFUL
 
-Total time: 36.748 secs
+Total time: 47.613 secs

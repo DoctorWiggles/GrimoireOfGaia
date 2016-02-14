@@ -24,8 +24,8 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityGaiaCreep extends EntityMobBase {
 	private int lastActiveTime;
@@ -44,7 +44,7 @@ public class EntityGaiaCreep extends EntityMobBase {
 		this.tasks.addTask(3, new EntityAIWander(this, 1.0D));
 		this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(4, new EntityAILookIdle(this));
-		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class,  true));
 		this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false));
 	}
 

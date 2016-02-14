@@ -5,7 +5,7 @@ import gaia.GaiaItem;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,8 +20,8 @@ import net.minecraft.world.World;
 
 import com.google.common.collect.Multimap;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemWeaponFanFire extends Item {
 	private int weaponDamage;
@@ -37,8 +37,8 @@ public class ItemWeaponFanFire extends Item {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.rare;
+	public EnumRarity getRarity(ItemStack itemstack) {
+		return EnumRarity.RARE;
 	}
 
 	public Multimap getItemAttributeModifiers() {
@@ -47,9 +47,9 @@ public class ItemWeaponFanFire extends Item {
 		return multimap;
 	}
 	
-	public void onCreated(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		par1ItemStack.addEnchantment(Enchantment.fireAspect, 2);
-		par1ItemStack.addEnchantment(Enchantment.knockback, 1);
+	public void onCreated(ItemStack itemstack, World par2World, EntityPlayer par3EntityPlayer) {
+		itemstack.addEnchantment(Enchantment.fireAspect, 2);
+		itemstack.addEnchantment(Enchantment.knockback, 1);
 	}
 
 	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
@@ -59,8 +59,8 @@ public class ItemWeaponFanFire extends Item {
 		par3List.add(is);
 	}
 
-	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving) {
-		par1ItemStack.damageItem(1, par3EntityLiving);
+	public boolean hitEntity(ItemStack itemstack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving) {
+		itemstack.damageItem(1, par3EntityLiving);
 		return true;
 	}
 
@@ -68,21 +68,21 @@ public class ItemWeaponFanFire extends Item {
 		return true;
 	}
 
-	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
+	public EnumAction getItemUseAction(ItemStack itemstack) {
 		return EnumAction.block;
 	}
 
-	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+	public int getMaxItemUseDuration(ItemStack itemstack) {
 		return 72000;
 	}
 
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
-		return par1ItemStack;
+	public ItemStack onItemRightClick(ItemStack itemstack, World par2World, EntityPlayer par3EntityPlayer) {
+		par3EntityPlayer.setItemInUse(itemstack, this.getMaxItemUseDuration(itemstack));
+		return itemstack;
 	}
 
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-		return GaiaItem.MiscSoulFiery == par2ItemStack.getItem()?true:super.getIsRepairable(par1ItemStack, par2ItemStack);
+	public boolean getIsRepairable(ItemStack itemstack, ItemStack par2ItemStack) {
+		return GaiaItem.MiscSoulFiery == par2ItemStack.getItem()?true:super.getIsRepairable(itemstack, par2ItemStack);
 	}
 
 	public void registerIcons(IIconRegister iconRegister) {

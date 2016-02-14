@@ -4,7 +4,7 @@ import gaia.Gaia;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -24,11 +24,11 @@ public class ItemFoodBerryFire extends ItemFood {
 		this.setCreativeTab(Gaia.tabGaia);
 	}
 
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocal("potion.moveSpeed") + " (0:20)");
 	}
 
-	protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+	protected void onFoodEaten(ItemStack itemstack, World par2World, EntityPlayer par3EntityPlayer) {
 		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 400, 0));
 	}
 
