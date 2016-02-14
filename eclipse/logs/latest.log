@@ -1,0 +1,32 @@
+[09:18:43] [main/INFO]: Setting user: Player748
+[09:18:45] [Client thread/INFO]: LWJGL Version: 2.9.1
+[09:19:00] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Grimoire of Gaia 3
+[09:19:00] [Sound Library Loader/INFO]: Sound engine started
+[09:19:02] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[09:19:02] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[09:19:02] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Grimoire of Gaia 3
+[09:19:03] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[09:19:03] [Client thread/INFO]: Created: 512x256 textures/items-atlas
+[09:19:04] [Sound Library Loader/INFO]: Sound engine started
+[09:19:45] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[09:19:45] [Server thread/INFO]: Generating keypair
+[09:19:45] [Server thread/INFO]: Converting map!
+[09:19:45] [Server thread/INFO]: Scanning folders...
+[09:19:45] [Server thread/INFO]: Total conversion count is 0
+[09:19:46] [Server thread/INFO]: Preparing start region for level 0
+[09:19:47] [Server thread/INFO]: Changing view distance to 12, from 10
+[09:19:48] [Server thread/INFO]: Player748[local:E:9e187828] logged in with entity id 4 at (-509.5, 4.0, -876.5)
+[09:19:48] [Server thread/INFO]: Player748 joined the game
+[09:19:51] [Server thread/INFO]: Player748 has just earned the achievement [Taking Inventory]
+[09:19:51] [Client thread/INFO]: [CHAT] Player748 has just earned the achievement [Taking Inventory]
+[09:20:50] [Server thread/INFO]: Saving and pausing game...
+[09:20:50] [Server thread/INFO]: Saving chunks for level 'Gog dong'/Overworld
+[09:20:50] [Server thread/INFO]: Saving chunks for level 'Gog dong'/Nether
+[09:20:50] [Server thread/INFO]: Saving chunks for level 'Gog dong'/The End
+[09:20:50] [Server thread/INFO]: Stopping server
+[09:20:50] [Server thread/INFO]: Saving players
+[09:20:50] [Server thread/INFO]: Saving worlds
+[09:20:50] [Server thread/INFO]: Saving chunks for level 'Gog dong'/Overworld
+[09:20:50] [Server thread/INFO]: Saving chunks for level 'Gog dong'/Nether
+[09:20:50] [Server thread/INFO]: Saving chunks for level 'Gog dong'/The End
+[09:20:52] [Client thread/INFO]: Stopping!
