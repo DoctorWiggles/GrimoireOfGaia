@@ -26,6 +26,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
@@ -95,27 +96,28 @@ public class EntityGaiaKobold extends EntityMobDay implements IRangedAttackMob {
 		}
 	}
 
-	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1IEntityLivingData) {
-		par1IEntityLivingData = super.onSpawnWithEgg(par1IEntityLivingData);
+	
+	
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
+		livingdata = super.onInitialSpawn(difficulty, livingdata);
 		if(this.worldObj.rand.nextInt(4) == 0) {
 			this.tasks.addTask(2, this.aiArrowAttack);
 			this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
-			this.enchantEquipment();
+			this.setEnchantmentBasedOnDifficulty(difficulty);
 			this.setTextureType(1);
 		} else {
 			this.tasks.addTask(2, this.aiAttackOnCollide);
 	        this.addRandomArmor();
-			this.enchantEquipment();
+	        this.setEnchantmentBasedOnDifficulty(difficulty);
 			this.setMobType(1);
 			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue((double)EntityAttributes.attackDamage1);
 			this.setTextureType(0);
 		}
 
-		return par1IEntityLivingData;
+		return livingdata;	
 	}
 	
     protected void addRandomArmor() {
-        super.addRandomArmor();
         int i = this.rand.nextInt(3);
 
         if (i == 0) {

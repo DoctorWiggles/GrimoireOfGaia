@@ -71,7 +71,6 @@ public class ItemBagRecord extends Item {
 		}
 	}
 
-	public void registerIcons(IIconRegister iconRegister) {
-		this.itemIcon = iconRegister.registerIcon("gaia:" + this.texture);
-	}
+	 
+		
 }

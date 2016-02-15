@@ -1,6 +1,5 @@
 package gaia;
 
-import gaia.items.GaiaDispenserBehaviorMobEgg;
 import gaia.items.ItemAccessoryDollCursed;
 import gaia.items.ItemAccessoryRingHaste;
 import gaia.items.ItemAccessoryRingJump;
@@ -13,47 +12,6 @@ import gaia.items.ItemBoxDiamond;
 import gaia.items.ItemBoxGold;
 import gaia.items.ItemBoxIron;
 import gaia.items.ItemBoxOld;
-import gaia.items.ItemFoodBerryCure;
-import gaia.items.ItemFoodBerryFire;
-import gaia.items.ItemFoodBerryHealth;
-import gaia.items.ItemFoodBerryIce;
-import gaia.items.ItemFoodCoalfish;
-import gaia.items.ItemFoodDriedNetherWart;
-import gaia.items.ItemFoodMandrake;
-import gaia.items.ItemFoodMeat;
-import gaia.items.ItemFoodMeatMorsel;
-import gaia.items.ItemFoodPieBerry;
-import gaia.items.ItemFoodPieMandrake;
-import gaia.items.ItemFoodPieMeat;
-import gaia.items.ItemFoodSmallAppleGold;
-import gaia.items.ItemFoodWitherMeat;
-import gaia.items.ItemFragment;
-import gaia.items.ItemGaiaSpawnEgg;
-import gaia.items.ItemMiscBook;
-import gaia.items.ItemMiscCurrency;
-import gaia.items.ItemMiscFurnaceFuel;
-import gaia.items.ItemMiscGigaGear;
-import gaia.items.ItemMiscPage;
-import gaia.items.ItemMiscRing;
-import gaia.items.ItemMiscSoulFiery;
-import gaia.items.ItemMiscSoulFire;
-import gaia.items.ItemMiscWeaponEnchanted;
-import gaia.items.ItemShard;
-import gaia.items.ItemSpawnCard;
-import gaia.items.ItemSpawnCardCreeperGirl;
-import gaia.items.ItemSpawnCardEnderGirl;
-import gaia.items.ItemSpawnCardHolstaurus;
-import gaia.items.ItemSpawnCardSlimeGirl;
-import gaia.items.ItemSpawnCardTrader;
-import gaia.items.ItemWeaponBookBattle;
-import gaia.items.ItemWeaponBookBuff;
-import gaia.items.ItemWeaponBookEnder;
-import gaia.items.ItemWeaponBookFreezing;
-import gaia.items.ItemWeaponBookHunger;
-import gaia.items.ItemWeaponBookMetal;
-import gaia.items.ItemWeaponBookNature;
-import gaia.items.ItemWeaponBookNightmare;
-import gaia.items.ItemWeaponBookWither;
 import gaia.items.ItemWeaponFanFire;
 import gaia.items.ItemWeaponFanIce;
 import gaia.items.ItemWeaponProp;
@@ -133,37 +91,6 @@ public class GaiaItem {
 	}
 
 	public static void addItems() {
-		Shard = new ItemShard("Shard");
-		Fragment = new ItemFragment("FragmentEmerald");
-		FoodMeatMorsel = new ItemFoodMeatMorsel(4, 0.8F, true, "FoodMeatMorsel");
-		FoodMeat = new ItemFoodMeat(8, 0.8F, true, "FoodMeat");
-		FoodCoalfish = new ItemFoodCoalfish(4, 0.4F, true, "FoodCoalfish");
-		FoodWitherMeat = new ItemFoodWitherMeat(8, 0.8F, true, "FoodWitherMeat");
-		FoodSmallAppleGold = (new ItemFoodSmallAppleGold(1, 0.4F, false, "FoodSmallAppleGold")).setAlwaysEdible();
-		FoodBerryHealth = (new ItemFoodBerryHealth(4, 0.0F, false, "FoodBerryHealth")).setAlwaysEdible();
-		FoodBerryCure = (new ItemFoodBerryCure(4, 0.0F, true, "FoodBerryCure")).setAlwaysEdible();
-		FoodBerryIce = (new ItemFoodBerryIce(4, 0.0F, true, "FoodBerryIce")).setAlwaysEdible();
-		FoodBerryFire = (new ItemFoodBerryFire(4, 0.0F, true, "FoodBerryFire")).setAlwaysEdible();
-		FoodDriedNetherWart = (new ItemFoodDriedNetherWart(4, 0.4F, true, "FoodDriedNetherWart")).setPotionEffect("+4");
-		FoodMandrake = (new ItemFoodMandrake(0, 0.0F, true, "FoodMandrake")).setAlwaysEdible();
-		FoodPieMandrake = (new ItemFoodPieMandrake(12, 0.8F, true, "FoodPieMandrake")).setAlwaysEdible();
-		FoodPieMeat = (new ItemFoodPieMeat(16, 0.8F, true, "FoodPieMeat"));
-		FoodPieBerry = (new ItemFoodPieBerry(12, 0.2F, true, "FoodPieBerry"));
-		MiscSoulFire = new ItemMiscSoulFire("MiscSoulFire");
-		MiscSoulFiery = new ItemMiscSoulFiery("MiscSoulFiery");
-		MiscGigaGear = new ItemMiscGigaGear("MiscGigaGear");
-		MiscPage = new ItemMiscPage("MiscPage");
-		MiscBook = new ItemMiscBook("MiscBook");
-		MiscRing = new ItemMiscRing("MiscRing");
-		MiscFurnaceFuel = new ItemMiscFurnaceFuel("MiscFurnaceFuel");
-		MiscCurrency = new ItemMiscCurrency("MiscCurrency");
-		MiscWeaponEnchanted = new ItemMiscWeaponEnchanted("MiscWeaponEnchanted");
-		SpawnCard = new ItemSpawnCard("SpawnCard");
-		SpawnCardCreeperGirl = new ItemSpawnCardCreeperGirl("SpawnCardCreeperGirl");
-		SpawnCardEnderGirl = new ItemSpawnCardEnderGirl("SpawnCardEnderGirl");
-		SpawnCardHolstaurus = new ItemSpawnCardHolstaurus("SpawnCardHolstaurus");
-		SpawnCardSlimeGirl = new ItemSpawnCardSlimeGirl("SpawnCardSlimeGirl");
-		SpawnCardTrader = new ItemSpawnCardTrader("SpawnCardTrader");
 		BoxIron = new ItemBoxIron("BoxIron");
 		BoxGold = new ItemBoxGold("BoxGold");
 		BoxDiamond = new ItemBoxDiamond("BoxDiamond");
@@ -175,21 +102,12 @@ public class GaiaItem {
 		PropWeaponInvisible = new ItemWeaponPropInvisible("WeaponPropInvisible");
 		FanIce = new ItemWeaponFanIce("WeaponFanIce");
 		FanFire = new ItemWeaponFanFire("WeaponFanFire");
-		BookFreezing = new ItemWeaponBookFreezing("WeaponBookFreezing");
-		BookNightmare = new ItemWeaponBookNightmare("WeaponBookNightmare");
-		BookMetal = new ItemWeaponBookMetal("WeaponBookMetal");
-		BookEnder = new ItemWeaponBookEnder("WeaponBookEnder");
-		BookHunger = new ItemWeaponBookHunger("WeaponBookHunger");
-		BookBattle = new ItemWeaponBookBattle("WeaponBookBattle");
-		BookNature = new ItemWeaponBookNature("WeaponBookNature");
-		BookWither = new ItemWeaponBookWither("WeaponBookWither");
-		BookBuff = new ItemWeaponBookBuff("WeaponBookBuff");
+
 		AccessoryRingSpeed = new ItemAccessoryRingSpeed("AccessoryRingSpeed");
 		AccessoryRingHaste = new ItemAccessoryRingHaste("AccessoryRingHaste");
 		AccessoryRingJump = new ItemAccessoryRingJump("AccessoryRingJump");
 		AccessoryRingNight = new ItemAccessoryRingNight("AccessoryRingNight");
 		AccessoryDollCursed = new ItemAccessoryDollCursed("AccessoryDollCursed");
-		SpawnEgg = new ItemGaiaSpawnEgg();
 
 		Item[] items = new Item[] { 
 				Shard, 
@@ -250,49 +168,15 @@ public class GaiaItem {
 				AccessoryDollCursed,
 				SpawnEgg 
 		};
-		for (int i = 0; i < items.length; i++) {
-			GameRegistry.registerItem(items[i], items[i].getUnlocalizedName());
-		}
+		GameRegistry.registerItem(PropWeapon, "WeaponProp");
 
-		BlockDispenser.dispenseBehaviorRegistry.putObject(SpawnEgg, new GaiaDispenserBehaviorMobEgg());
+		
 	}
     
 	public static void addRecipes() {
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.iron_ingot, 1), new Object[]{new ItemStack(Shard, 1, 0), new ItemStack(Shard, 1, 0), new ItemStack(Shard, 1, 0), new ItemStack(Shard, 1, 0)});
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.gold_ingot, 1), new Object[]{new ItemStack(Shard, 1, 1), new ItemStack(Shard, 1, 1), new ItemStack(Shard, 1, 1), new ItemStack(Shard, 1, 1)});
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.diamond, 1), new Object[]{new ItemStack(Shard, 1, 2), new ItemStack(Shard, 1, 2), new ItemStack(Shard, 1, 2), new ItemStack(Shard, 1, 2)});
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.emerald, 1), new Object[]{new ItemStack(Shard, 1, 3), new ItemStack(Shard, 1, 3), new ItemStack(Shard, 1, 3), new ItemStack(Shard, 1, 3)});
-		GameRegistry.addShapelessRecipe(new ItemStack(Shard, 1, 3), new Object[]{Fragment, Fragment});
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.emerald, 1), new Object[]{Fragment, Fragment, Fragment, Fragment, Fragment, Fragment, Fragment, Fragment});
-		GameRegistry.addRecipe(new ItemStack(Items.nether_star, 2), new Object[]{"Y Y", " X ", "Y Y", Character.valueOf('X'), Items.nether_star, Character.valueOf('Y'), new ItemStack(Shard, 1, 4)});
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.ender_pearl, 1), new Object[]{new ItemStack(Shard, 1, 5), new ItemStack(Shard, 1, 5), new ItemStack(Shard, 1, 5), new ItemStack(Shard, 1, 5)});
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.blaze_rod, 1), new Object[]{new ItemStack(Shard, 1, 6), new ItemStack(Shard, 1, 6), new ItemStack(Shard, 1, 6), new ItemStack(Shard, 1, 6)});
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.golden_apple, 1, 1), new Object[]{FoodSmallAppleGold, FoodSmallAppleGold, FoodSmallAppleGold, FoodSmallAppleGold, FoodSmallAppleGold, FoodSmallAppleGold, FoodSmallAppleGold, FoodSmallAppleGold});
-		GameRegistry.addShapelessRecipe(new ItemStack(FoodPieMandrake, 1), new Object[]{FoodMandrake, Items.sugar, Items.egg});
-		GameRegistry.addShapelessRecipe(new ItemStack(FoodPieMeat, 1), new Object[]{FoodMeatMorsel, FoodMeatMorsel, FoodMeatMorsel, FoodMeatMorsel, Items.sugar, Items.egg});
-		GameRegistry.addShapelessRecipe(new ItemStack(FoodPieMeat, 1), new Object[]{FoodMeat, FoodMeat, Items.sugar, Items.egg});
-		GameRegistry.addShapelessRecipe(new ItemStack(FoodPieMeat, 1), new Object[]{FoodWitherMeat, Items.sugar, Items.egg});
-		GameRegistry.addShapelessRecipe(new ItemStack(FoodPieBerry, 1), new Object[]{FoodBerryHealth, Items.sugar, Items.egg});
-		GameRegistry.addShapelessRecipe(new ItemStack(FoodPieBerry, 1), new Object[]{FoodBerryCure, Items.sugar, Items.egg});
-		GameRegistry.addShapelessRecipe(new ItemStack(FoodPieBerry, 1), new Object[]{FoodBerryIce, Items.sugar, Items.egg});
-		GameRegistry.addShapelessRecipe(new ItemStack(FoodPieBerry, 1), new Object[]{FoodBerryFire, Items.sugar, Items.egg});
-		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.coal_block, 1), new Object[]{MiscFurnaceFuel, MiscFurnaceFuel, MiscFurnaceFuel, MiscFurnaceFuel});
-		GameRegistry.addShapelessRecipe(new ItemStack(FanIce, 1), new Object[]{new ItemStack(MiscWeaponEnchanted, 1, 0), Items.snowball});
-		GameRegistry.addShapelessRecipe(new ItemStack(FanFire, 1), new Object[]{new ItemStack(MiscWeaponEnchanted, 1, 1), Items.coal});
-		GameRegistry.addShapelessRecipe(new ItemStack(AccessoryRingSpeed, 1), new Object[]{new ItemStack(MiscRing, 1, 0), Blocks.beacon});
-		GameRegistry.addShapelessRecipe(new ItemStack(AccessoryRingHaste, 1), new Object[]{new ItemStack(MiscRing, 1, 1), Blocks.beacon});
-		GameRegistry.addShapelessRecipe(new ItemStack(AccessoryRingJump, 1), new Object[]{new ItemStack(MiscRing, 1, 2), Blocks.beacon});
-		GameRegistry.addShapelessRecipe(new ItemStack(AccessoryRingNight, 1), new Object[]{new ItemStack(MiscRing, 1, 3), Blocks.beacon});
 	}
 	
     public static void oreRegistration() {
-            OreDictionary.registerOre("shardIronIngot", new ItemStack(Shard, 1, 0));
-            OreDictionary.registerOre("shardGoldIngot", new ItemStack(Shard, 1, 1));
-            OreDictionary.registerOre("shardDiamond", new ItemStack(Shard, 1, 2));
-            OreDictionary.registerOre("shardEmerald", new ItemStack(Shard, 1, 3));
-            OreDictionary.registerOre("shardEnderPearl", new ItemStack(Shard, 1, 5));
-            OreDictionary.registerOre("shardBlazeRod", new ItemStack(Shard, 1, 6));
-            OreDictionary.registerOre("fragmentEmerald", Fragment);
     }
 
 	public static void addNames() {}

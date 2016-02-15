@@ -62,8 +62,6 @@ public class ItemAccessoryDollCursed extends Item {
 	}
 
 	
-	public void registerIcons(IIconRegister iconRegister) {
-		this.itemIcon = iconRegister.registerIcon("gaia:" + this.texture);
-	}
+	
 	
 }

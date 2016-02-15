@@ -1,5 +1,6 @@
 package gaia.renderer;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -10,7 +11,10 @@ public class RenderGaiaSummonButler extends RenderBiped {
 
 	private static final ResourceLocation texture = new ResourceLocation("gaia", "textures/models/Summon_Butler.png");
 
-	public RenderGaiaSummonButler(RenderManager rend) {
+
+	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
+	
+	public RenderGaiaSummonButler() {
 		super(rend, new ModelBiped(), 0.0F);
 	}
 

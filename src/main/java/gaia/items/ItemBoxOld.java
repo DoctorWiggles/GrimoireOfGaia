@@ -64,7 +64,6 @@ public class ItemBoxOld extends Item {
 		}
 	}
 
-	public void registerIcons(IIconRegister iconRegister) {
-		this.itemIcon = iconRegister.registerIcon("gaia:" + this.texture);
-	}
+	 
+	
 }

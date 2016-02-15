@@ -24,7 +24,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
@@ -69,11 +71,12 @@ public class EntityGaiaAnubis extends EntityMobBase implements IRangedAttackMob 
 		return EntityAttributes.rateArmor2;
 	}
 	
-	public void attackEntityWithRangedAttack(EntityLivingBase par1EntityLivingBase, float par2) {
-		this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
-		double d0 = par1EntityLivingBase.posX - this.posX;
-		double d1 = par1EntityLivingBase.boundingBox.minY + (double)(par1EntityLivingBase.height / 2.0F) - (this.posY + (double)(this.height / 2.0F));
-		double d2 = par1EntityLivingBase.posZ - this.posZ;
+	public void attackEntityWithRangedAttack(EntityLivingBase Living, float par2) {
+		//this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
+		this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, this.getPosition(), 0);
+		double d0 = Living.posX - this.posX;
+		double d1 = Living.getEntityBoundingBox().minY + (double)(Living.height / 2.0F) - (this.posY + (double)(this.height / 2.0F));
+		double d2 = Living.posZ - this.posZ;
 		float f1 = MathHelper.sqrt_float(par2) * 0.5F;
 		
 		EntityGaiaProjectileMagic var11 = new EntityGaiaProjectileMagic(this.worldObj, this, d0 + this.rand.nextGaussian() * (double)f1, d1, d2 + this.rand.nextGaussian() * (double)f1);
@@ -125,7 +128,7 @@ public class EntityGaiaAnubis extends EntityMobBase implements IRangedAttackMob 
 		if(this.getHealth() < EntityAttributes.maxHealth2 * 0.75F && this.getHealth() > 0.0F && this.spawn == 0 && !this.worldObj.isRemote) {
 			spawnMob = new EntitySkeleton(this.worldObj);
 			spawnMob.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
-			spawnMob.onSpawnWithEgg((IEntityLivingData)null);
+			spawnMob.onInitialSpawn(this.worldObj.getDifficultyForLocation(new BlockPos(spawnMob)), (IEntityLivingData)null);
 			this.worldObj.spawnEntityInWorld(spawnMob);
 			this.spawn = 1;
 		}
@@ -133,7 +136,9 @@ public class EntityGaiaAnubis extends EntityMobBase implements IRangedAttackMob 
 		if(this.getHealth() < EntityAttributes.maxHealth2 * 0.25F && this.getHealth() > 0.0F && this.spawn == 1 && !this.worldObj.isRemote) {
 			spawnMob = new EntitySkeleton(this.worldObj);
 			spawnMob.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
-			spawnMob.onSpawnWithEgg((IEntityLivingData)null);
+			//TODO egg spawn code
+			//spawnMob.onSpawnWithEgg((IEntityLivingData)null);
+			spawnMob.onInitialSpawn(this.worldObj.getDifficultyForLocation(new BlockPos(spawnMob)), (IEntityLivingData)null);
 			this.worldObj.spawnEntityInWorld(spawnMob);
 			this.spawn = 2;
 		}
@@ -207,12 +212,24 @@ public class EntityGaiaAnubis extends EntityMobBase implements IRangedAttackMob 
     protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
     }
 
-	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1IEntityLivingData) {
-		par1IEntityLivingData = super.onSpawnWithEgg(par1IEntityLivingData);
+	
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
+    {
+		livingdata = super.onInitialSpawn(difficulty, livingdata);
+		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeapon, 1, 0));		
+		this.setEnchantmentBasedOnDifficulty(difficulty);
+		return livingdata;		
+		
+    }
+	/**
+	public IEntityLivingData onSpawnWithEgg(IEntityLivingData Living_data) {
+		Living_data = super.onSpawnWithEgg(Living_data);
 		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeapon, 1, 0));
-		this.enchantEquipment();
-		return par1IEntityLivingData;
+		//this.enchantEquipment();
+		this.setEnchantmentBasedOnDifficulty(null);
+		return Living_data;
 	}
+	**/
 	
 	public void setCurrentItemOrArmor(int par1, ItemStack par2ItemStack) {
 		super.setCurrentItemOrArmor(par1, par2ItemStack);

@@ -44,12 +44,7 @@ public class ItemWeaponFanIce extends Item {
 		return EnumRarity.RARE;
 	}
 
-	public Multimap getItemAttributeModifiers() {
-		Multimap multimap = super.getItemAttributeModifiers();
-		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier", (double)this.weaponDamage, 0));
-		return multimap;
-	}
-
+	
 	public void addInformation(ItemStack itemstack, EntityPlayer player, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocal("potion.moveSlowdown") + " IV" + " (0:05)");
 	}
@@ -74,10 +69,6 @@ public class ItemWeaponFanIce extends Item {
 		return true;
 	}
 
-	public EnumAction getItemUseAction(ItemStack itemstack) {
-		return EnumAction.block;
-	}
-
 	public int getMaxItemUseDuration(ItemStack itemstack) {
 		return 72000;
 	}
@@ -91,7 +82,6 @@ public class ItemWeaponFanIce extends Item {
 		return GaiaItem.MiscSoulFire == par2ItemStack.getItem()?true:super.getIsRepairable(itemstack, par2ItemStack);
 	}
 
-	public void registerIcons(IIconRegister iconRegister) {
-		this.itemIcon = iconRegister.registerIcon("gaia:" + this.texture);
-	}
+	 
+	
 }

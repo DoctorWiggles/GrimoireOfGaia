@@ -1,11 +1,15 @@
 package gaia.model;
 
+import gaia.renderer.base_held;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
-public class ModelGaiaKobold extends ModelBase {
+public class ModelGaiaKobold extends base_held {
+	
+	
+	
 	ModelRenderer head;
 	ModelRenderer headaccessory;
 	ModelRenderer rightear;
@@ -23,7 +27,7 @@ public class ModelGaiaKobold extends ModelBase {
     ModelRenderer rightarmguard;
 	ModelRenderer rightarmlower;
 	ModelRenderer leftarmlower;
-	public static ModelRenderer righthand;
+	//public static ModelRenderer righthand;
 	ModelRenderer lefthand;
 	ModelRenderer backpack;
     ModelRenderer quiver;
@@ -38,6 +42,8 @@ public class ModelGaiaKobold extends ModelBase {
 	ModelRenderer leftleglower;
 	ModelRenderer rightfootlower;
 	ModelRenderer leftfootlower;
+	
+	
 
 	public ModelGaiaKobold() {
 		this.textureWidth = 128;

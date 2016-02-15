@@ -1,6 +1,6 @@
 package gaia.model;
 
-import net.minecraft.client.model.ModelBase;
+import gaia.renderer.base_held;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
@@ -8,7 +8,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ModelGaiaAnubis extends ModelBase {
+public class ModelGaiaAnubis extends base_held {
+	
+	
 	ModelRenderer head;
 	ModelRenderer headaccessory;
 	ModelRenderer rightear;
@@ -27,7 +29,7 @@ public class ModelGaiaAnubis extends ModelBase {
 	ModelRenderer leftarm;
 	ModelRenderer rightarmlower;
 	ModelRenderer leftarmlower;
-	public static ModelRenderer rightarmhand;
+	//public static ModelRenderer righthand;
 	ModelRenderer leftarmhand;
 	ModelRenderer tail;
 	ModelRenderer waist;
@@ -40,6 +42,7 @@ public class ModelGaiaAnubis extends ModelBase {
 	ModelRenderer rightfoot;
 	ModelRenderer leftfoot;
 
+	
 	public ModelGaiaAnubis() {
 		this.textureWidth = 128;
 		this.textureHeight = 64;
@@ -152,12 +155,12 @@ public class ModelGaiaAnubis extends ModelBase {
 		this.leftarmlower.setTextureSize(64, 32);
 		this.leftarmlower.mirror = true;
 		this.setRotation(leftarmlower, 0F, 0F, -0.1745329F);
-		this.rightarmhand = new ModelRenderer(this, 64, 11);
-		this.rightarmhand.addBox(-1.5F, 8F, -2F, 2, 4, 4);
-		this.rightarmhand.setRotationPoint(-2.5F, 2.5F, 0F);
-		this.rightarmhand.setTextureSize(64, 32);
-		this.rightarmhand.mirror = true;
-		this.setRotation(rightarmhand, 0F, 0F, 0.1745329F);
+		this.righthand = new ModelRenderer(this, 64, 11);
+		this.righthand.addBox(-1.5F, 8F, -2F, 2, 4, 4);
+		this.righthand.setRotationPoint(-2.5F, 2.5F, 0F);
+		this.righthand.setTextureSize(64, 32);
+		this.righthand.mirror = true;
+		this.setRotation(righthand, 0F, 0F, 0.1745329F);
 		this.leftarmhand = new ModelRenderer(this, 76, 11);
 		this.leftarmhand.addBox(-0.5F, 7.5F, -2F, 2, 4, 4);
 		this.leftarmhand.setRotationPoint(2.5F, 2.5F, 0F);
@@ -248,7 +251,7 @@ public class ModelGaiaAnubis extends ModelBase {
 		this.leftarm.render(par7);
 		this.rightarmlower.render(par7);
 		this.leftarmlower.render(par7);
-		this.rightarmhand.render(par7);
+		this.righthand.render(par7);
 		this.leftarmhand.render(par7);
 		this.tail.render(par7);
 		this.waist.render(par7);
@@ -281,11 +284,11 @@ public class ModelGaiaAnubis extends ModelBase {
 		this.crown.rotateAngleY = this.head.rotateAngleY;
 		this.hair1.rotateAngleY = this.head.rotateAngleY;
 		this.hair2.rotateAngleY = this.head.rotateAngleY;
-		this.rightarmhand.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float)Math.PI) * 0.8F * par2 * 0.5F;
+		this.righthand.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float)Math.PI) * 0.8F * par2 * 0.5F;
 		this.leftarmhand.rotateAngleX = MathHelper.cos(par1 * 0.6662F) * 0.8F * par2 * 0.5F;
-		this.rightarm.rotateAngleX = this.rightarmhand.rotateAngleX;
+		this.rightarm.rotateAngleX = this.righthand.rotateAngleX;
 		this.leftarm.rotateAngleX = this.leftarmhand.rotateAngleX;
-		this.rightarmlower.rotateAngleX = this.rightarmhand.rotateAngleX;
+		this.rightarmlower.rotateAngleX = this.righthand.rotateAngleX;
 		this.leftarmlower.rotateAngleX = this.leftarmhand.rotateAngleX;
 		this.tail.rotateAngleY = MathHelper.cos(par1 * 0.6662F) * 0.5F * par2;
 		this.rightleg.rotateAngleX = MathHelper.cos(par1 * 0.6662F) * 0.5F * par2;
@@ -309,15 +312,15 @@ public class ModelGaiaAnubis extends ModelBase {
             f7 = MathHelper.sin(f6 * (float)Math.PI);
             float f8 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
             
-            this.rightarmhand.rotateAngleX = (float)((double)this.rightarmhand.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
-            this.rightarm.rotateAngleX = this.rightarmhand.rotateAngleX; 
-            this.rightarmlower.rotateAngleX = this.rightarmhand.rotateAngleX;
-            this.rightarmhand.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
-            this.rightarm.rotateAngleY = this.rightarmhand.rotateAngleY; 
-            this.rightarmlower.rotateAngleY = this.rightarmhand.rotateAngleY;
-            this.rightarmhand.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.1745329F;
-            this.rightarm.rotateAngleZ = this.rightarmhand.rotateAngleZ; 
-            this.rightarmlower.rotateAngleZ = this.rightarmhand.rotateAngleZ;
+            this.righthand.rotateAngleX = (float)((double)this.righthand.rotateAngleX - ((double)f7 * 1.2D + (double)f8));
+            this.rightarm.rotateAngleX = this.righthand.rotateAngleX; 
+            this.rightarmlower.rotateAngleX = this.righthand.rotateAngleX;
+            this.righthand.rotateAngleY += (this.bodytop.rotateAngleY * 2.0F);
+            this.rightarm.rotateAngleY = this.righthand.rotateAngleY; 
+            this.rightarmlower.rotateAngleY = this.righthand.rotateAngleY;
+            this.righthand.rotateAngleZ = (MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F) + 0.1745329F;
+            this.rightarm.rotateAngleZ = this.righthand.rotateAngleZ; 
+            this.rightarmlower.rotateAngleZ = this.righthand.rotateAngleZ;
         }
 	}
 }

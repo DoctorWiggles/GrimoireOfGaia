@@ -47,8 +47,7 @@ public class ItemBagBook extends Item {
 		return book;
 	}
 	
-	public void registerIcons(IIconRegister iconRegister) {
-		this.itemIcon = iconRegister.registerIcon("gaia:" + this.texture);
-	}
+	 
+	
 	
 }

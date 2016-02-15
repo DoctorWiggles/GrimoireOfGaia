@@ -5,23 +5,20 @@ import gaia.GaiaItem;
 
 import java.util.List;
 
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import com.google.common.collect.Multimap;
-
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import com.google.common.collect.Multimap;
 
 public class ItemWeaponFanFire extends Item {
 	private int weaponDamage;
@@ -41,11 +38,6 @@ public class ItemWeaponFanFire extends Item {
 		return EnumRarity.RARE;
 	}
 
-	public Multimap getItemAttributeModifiers() {
-		Multimap multimap = super.getItemAttributeModifiers();
-		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Tool modifier", (double)this.weaponDamage, 0));
-		return multimap;
-	}
 	
 	public void onCreated(ItemStack itemstack, World par2World, EntityPlayer par3EntityPlayer) {
 		itemstack.addEnchantment(Enchantment.fireAspect, 2);
@@ -68,10 +60,6 @@ public class ItemWeaponFanFire extends Item {
 		return true;
 	}
 
-	public EnumAction getItemUseAction(ItemStack itemstack) {
-		return EnumAction.block;
-	}
-
 	public int getMaxItemUseDuration(ItemStack itemstack) {
 		return 72000;
 	}
@@ -85,7 +73,6 @@ public class ItemWeaponFanFire extends Item {
 		return GaiaItem.MiscSoulFiery == par2ItemStack.getItem()?true:super.getIsRepairable(itemstack, par2ItemStack);
 	}
 
-	public void registerIcons(IIconRegister iconRegister) {
-		this.itemIcon = iconRegister.registerIcon("gaia:" + this.texture);
-	}
+	 
+	
 }

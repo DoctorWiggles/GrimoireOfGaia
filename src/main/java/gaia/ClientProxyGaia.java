@@ -1,124 +1,25 @@
 package gaia;
 
 import gaia.entity.monster.EntityGaiaAnubis;
-import gaia.entity.monster.EntityGaiaBanshee;
-import gaia.entity.monster.EntityGaiaBaphomet;
-import gaia.entity.monster.EntityGaiaBoneKnight;
-import gaia.entity.monster.EntityGaiaCentaur;
-import gaia.entity.monster.EntityGaiaCobbleGolem;
-import gaia.entity.monster.EntityGaiaCobblestoneGolem;
 import gaia.entity.monster.EntityGaiaCockatrice;
-import gaia.entity.monster.EntityGaiaCreep;
-import gaia.entity.monster.EntityGaiaCyclops;
-import gaia.entity.monster.EntityGaiaDhampir;
-import gaia.entity.monster.EntityGaiaDryad;
-import gaia.entity.monster.EntityGaiaDullahan;
-import gaia.entity.monster.EntityGaiaEnderDragonGirl;
-import gaia.entity.monster.EntityGaiaEnderEye;
-import gaia.entity.monster.EntityGaiaFleshLich;
 import gaia.entity.monster.EntityGaiaFutakuchiOnna;
-import gaia.entity.monster.EntityGaiaGryphon;
-import gaia.entity.monster.EntityGaiaHarpy;
-import gaia.entity.monster.EntityGaiaHunter;
-import gaia.entity.monster.EntityGaiaJorogumo;
 import gaia.entity.monster.EntityGaiaKobold;
-import gaia.entity.monster.EntityGaiaMandragora;
-import gaia.entity.monster.EntityGaiaMermaid;
-import gaia.entity.monster.EntityGaiaMimic;
-import gaia.entity.monster.EntityGaiaMinotaur;
-import gaia.entity.monster.EntityGaiaMinotaurus;
-import gaia.entity.monster.EntityGaiaNaga;
-import gaia.entity.monster.EntityGaiaNineTails;
-import gaia.entity.monster.EntityGaiaSahuagin;
-import gaia.entity.monster.EntityGaiaSatyr;
-import gaia.entity.monster.EntityGaiaSelkie;
-import gaia.entity.monster.EntityGaiaShaman;
-import gaia.entity.monster.EntityGaiaSharko;
-import gaia.entity.monster.EntityGaiaSiren;
-import gaia.entity.monster.EntityGaiaSludgeGirl;
-import gaia.entity.monster.EntityGaiaSphinx;
-import gaia.entity.monster.EntityGaiaSpriggan;
-import gaia.entity.monster.EntityGaiaSuccubus;
 import gaia.entity.monster.EntityGaiaSummonButler;
-import gaia.entity.monster.EntityGaiaSwamper;
-import gaia.entity.monster.EntityGaiaValkyrie;
-import gaia.entity.monster.EntityGaiaVampire;
-import gaia.entity.monster.EntityGaiaWerecat;
-import gaia.entity.monster.EntityGaiaWitch;
-import gaia.entity.monster.EntityGaiaWitherCow;
-import gaia.entity.monster.EntityGaiaYeti;
-import gaia.entity.monster.EntityGaiaYukiOnna;
 import gaia.entity.passive.EntityGaiaNPCCreeperGirl;
 import gaia.entity.passive.EntityGaiaNPCEnderGirl;
 import gaia.entity.passive.EntityGaiaNPCHolstaurus;
 import gaia.entity.passive.EntityGaiaNPCSlimeGirl;
 import gaia.entity.passive.EntityGaiaNPCTrader;
-import gaia.entity.passive.EntityGaiaPropFlowerCyan;
-import gaia.entity.projectile.EntityGaiaProjectileMagic;
 import gaia.renderer.RenderGaiaAnubis;
-import gaia.renderer.RenderGaiaBanshee;
-import gaia.renderer.RenderGaiaBaphomet;
-import gaia.renderer.RenderGaiaBoneKnight;
-import gaia.renderer.RenderGaiaCentaur;
-import gaia.renderer.RenderGaiaCobbleGolem;
-import gaia.renderer.RenderGaiaCobblestoneGolem;
 import gaia.renderer.RenderGaiaCockatrice;
-import gaia.renderer.RenderGaiaCreep;
-import gaia.renderer.RenderGaiaCyclops;
-import gaia.renderer.RenderGaiaDhampir;
-import gaia.renderer.RenderGaiaDryad;
-import gaia.renderer.RenderGaiaDullahan;
-import gaia.renderer.RenderGaiaEnderDragonGirl;
-import gaia.renderer.RenderGaiaEnderEye;
-import gaia.renderer.RenderGaiaFleshLich;
 import gaia.renderer.RenderGaiaFutakuchiOnna;
-import gaia.renderer.RenderGaiaGryphon;
-import gaia.renderer.RenderGaiaHarpy;
-import gaia.renderer.RenderGaiaHunter;
-import gaia.renderer.RenderGaiaJorogumo;
 import gaia.renderer.RenderGaiaKobold;
-import gaia.renderer.RenderGaiaMandragora;
-import gaia.renderer.RenderGaiaMermaid;
-import gaia.renderer.RenderGaiaMimic;
-import gaia.renderer.RenderGaiaMinotaur;
-import gaia.renderer.RenderGaiaMinotaurus;
 import gaia.renderer.RenderGaiaNPCCreeperGirl;
 import gaia.renderer.RenderGaiaNPCEnderGirl;
 import gaia.renderer.RenderGaiaNPCHolstaurus;
 import gaia.renderer.RenderGaiaNPCSlimeGirl;
 import gaia.renderer.RenderGaiaNPCTrader;
-import gaia.renderer.RenderGaiaNaga;
-import gaia.renderer.RenderGaiaNineTails;
-import gaia.renderer.RenderGaiaProjectileMagic;
-import gaia.renderer.RenderGaiaPropFlowerCyan;
-import gaia.renderer.RenderGaiaSahuagin;
-import gaia.renderer.RenderGaiaSatyr;
-import gaia.renderer.RenderGaiaSelkie;
-import gaia.renderer.RenderGaiaShaman;
-import gaia.renderer.RenderGaiaSharko;
-import gaia.renderer.RenderGaiaSiren;
-import gaia.renderer.RenderGaiaSludgeGirl;
-import gaia.renderer.RenderGaiaSphinx;
-import gaia.renderer.RenderGaiaSpriggan;
-import gaia.renderer.RenderGaiaSuccubus;
 import gaia.renderer.RenderGaiaSummonButler;
-import gaia.renderer.RenderGaiaSwamper;
-import gaia.renderer.RenderGaiaValkyrie;
-import gaia.renderer.RenderGaiaVampire;
-import gaia.renderer.RenderGaiaWerecat;
-import gaia.renderer.RenderGaiaWitch;
-import gaia.renderer.RenderGaiaWitherCow;
-import gaia.renderer.RenderGaiaYeti;
-import gaia.renderer.RenderGaiaYukiOnna;
-import gaia.renderer.RenderWeaponBookBattle;
-import gaia.renderer.RenderWeaponBookBuff;
-import gaia.renderer.RenderWeaponBookEnder;
-import gaia.renderer.RenderWeaponBookFreezing;
-import gaia.renderer.RenderWeaponBookHunger;
-import gaia.renderer.RenderWeaponBookMetal;
-import gaia.renderer.RenderWeaponBookNature;
-import gaia.renderer.RenderWeaponBookNightmare;
-import gaia.renderer.RenderWeaponBookWither;
 import gaia.renderer.tileentity.TileRenderBustSphinx;
 import gaia.renderer.tileentity.TileRenderBustValkyrie;
 import gaia.renderer.tileentity.TileRenderBustVampire;
@@ -135,7 +36,6 @@ import gaia.tileentity.TileEntityDollMaid;
 import gaia.tileentity.TileEntityDollSlimeGirl;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
@@ -145,62 +45,26 @@ public class ClientProxyGaia extends CommonProxyGaia {
 	
 	public void registerRenderThings() {
 		super.registerRenderThings();
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaAnubis.class, new RenderGaiaAnubis(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaBanshee.class, new RenderGaiaBanshee(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaBaphomet.class, new RenderGaiaBaphomet(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaBoneKnight.class, new RenderGaiaBoneKnight(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaSummonButler.class, new RenderGaiaSummonButler(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaCreep.class, new RenderGaiaCreep(rend));	
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaCentaur.class, new RenderGaiaCentaur(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaCobbleGolem.class, new RenderGaiaCobbleGolem(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaCobblestoneGolem.class, new RenderGaiaCobblestoneGolem(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaCockatrice.class, new RenderGaiaCockatrice(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaCyclops.class, new RenderGaiaCyclops(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaDhampir.class, new RenderGaiaDhampir(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaDryad.class, new RenderGaiaDryad(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaDullahan.class, new RenderGaiaDullahan(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaEnderDragonGirl.class, new RenderGaiaEnderDragonGirl(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaEnderEye.class, new RenderGaiaEnderEye(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaFleshLich.class, new RenderGaiaFleshLich(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaFutakuchiOnna.class, new RenderGaiaFutakuchiOnna(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaPropFlowerCyan.class, new RenderGaiaPropFlowerCyan(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaGryphon.class, new RenderGaiaGryphon(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaJorogumo.class, new RenderGaiaJorogumo(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaKobold.class, new RenderGaiaKobold(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaHarpy.class, new RenderGaiaHarpy(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaHunter.class, new RenderGaiaHunter(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaMandragora.class, new RenderGaiaMandragora(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaMermaid.class, new RenderGaiaMermaid(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaMimic.class, new RenderGaiaMimic(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaMinotaur.class, new RenderGaiaMinotaur(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaMinotaurus.class, new RenderGaiaMinotaurus(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaNaga.class, new RenderGaiaNaga(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaNineTails.class, new RenderGaiaNineTails(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaNPCCreeperGirl.class, new RenderGaiaNPCCreeperGirl(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaNPCEnderGirl.class, new RenderGaiaNPCEnderGirl(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaNPCHolstaurus.class, new RenderGaiaNPCHolstaurus(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaNPCSlimeGirl.class, new RenderGaiaNPCSlimeGirl(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaNPCTrader.class, new RenderGaiaNPCTrader(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaSahuagin.class, new RenderGaiaSahuagin(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaSatyr.class, new RenderGaiaSatyr(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaSelkie.class, new RenderGaiaSelkie(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaShaman.class, new RenderGaiaShaman(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaSharko.class, new RenderGaiaSharko(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaSiren.class, new RenderGaiaSiren(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaSludgeGirl.class, new RenderGaiaSludgeGirl(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaSphinx.class, new RenderGaiaSphinx(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaSpriggan.class, new RenderGaiaSpriggan(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaSuccubus.class, new RenderGaiaSuccubus(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaSwamper.class, new RenderGaiaSwamper(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaValkyrie.class, new RenderGaiaValkyrie(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaVampire.class, new RenderGaiaVampire(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaWerecat.class, new RenderGaiaWerecat(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaWitch.class, new RenderGaiaWitch(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaWitherCow.class, new RenderGaiaWitherCow(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaYeti.class, new RenderGaiaYeti(rend));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaYukiOnna.class, new RenderGaiaYukiOnna(rend));
+		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaAnubis.class, new RenderGaiaAnubis());
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaSummonButler.class, new RenderGaiaSummonButler());
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaNPCEnderGirl.class, new RenderGaiaNPCEnderGirl());
+		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaNPCSlimeGirl.class, new RenderGaiaNPCSlimeGirl());
+		
+		
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaProjectileMagic.class, new RenderGaiaProjectileMagic(1));
+		RenderingRegistry.registerEntityRenderingHandler(EntityGaiaKobold.class, new RenderGaiaKobold());
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBustSphinx.class, new TileRenderBustSphinx());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBustValkyrie.class, new TileRenderBustValkyrie());
@@ -210,14 +74,5 @@ public class ClientProxyGaia extends CommonProxyGaia {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDollSlimeGirl.class, new TileRenderDollSlimeGirl());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDollMaid.class, new TileRenderDollMaid());
 		
-	    //MinecraftForgeClient.registerItemRenderer(GaiaItem.BookFreezing, new RenderWeaponBookFreezing());
-	    //MinecraftForgeClient.registerItemRenderer(GaiaItem.BookNightmare, new RenderWeaponBookNightmare());
-	    //MinecraftForgeClient.registerItemRenderer(GaiaItem.BookMetal, new RenderWeaponBookMetal());
-	    //MinecraftForgeClient.registerItemRenderer(GaiaItem.BookEnder, new RenderWeaponBookEnder());
-	    //MinecraftForgeClient.registerItemRenderer(GaiaItem.BookHunger, new RenderWeaponBookHunger());
-	    //MinecraftForgeClient.registerItemRenderer(GaiaItem.BookBattle, new RenderWeaponBookBattle());
-	    //MinecraftForgeClient.registerItemRenderer(GaiaItem.BookNature, new RenderWeaponBookNature());
-	    //MinecraftForgeClient.registerItemRenderer(GaiaItem.BookWither, new RenderWeaponBookWither());
-	    //MinecraftForgeClient.registerItemRenderer(GaiaItem.BookBuff, new RenderWeaponBookBuff());
 	}
 }
