@@ -2,25 +2,24 @@ package gaia.renderer;
 
 import org.lwjgl.opengl.GL11;
 
-import gaia.entity.monster.EntityGaiaAnubis;
+import gaia.GaiaReference;
 import gaia.model.ModelGaiaAnubis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderGaiaAnubis extends RenderLiving {
 
-	private static final ResourceLocation texture = new ResourceLocation("gaia", "textures/models/Anubis.png");
+	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Anubis.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
 	
-	public RenderGaiaAnubis() {
-        super(rend, new ModelGaiaAnubis(), 0.5F);
+	public RenderGaiaAnubis(float shadow) {
+        super(rend, new ModelGaiaAnubis(), shadow);
         //Held Item rendering simplified to a single class
         //May need more parameters in the future to accommodate or tweak per mob
         this.addLayer(new held_rightarm(this, ModelGaiaAnubis.rightarmhand));

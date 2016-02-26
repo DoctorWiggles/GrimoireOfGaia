@@ -1,13 +1,12 @@
 package gaia.entity;
 
+import java.util.Iterator;
+
 import gaia.entity.passive.EntityGaiaNPCCreeperGirl;
 import gaia.entity.passive.EntityGaiaNPCEnderGirl;
 import gaia.entity.passive.EntityGaiaNPCHolstaurus;
 import gaia.entity.passive.EntityGaiaNPCSlimeGirl;
 import gaia.entity.passive.EntityGaiaNPCTrader;
-
-import java.util.Iterator;
-
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.INpc;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -178,11 +177,13 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 		}
 	}
 	*/
+	
+	@Override
 	public void useRecipe(MerchantRecipe recipe)
     {
         recipe.incrementToolUses();
         this.livingSoundTime = -this.getTalkInterval();
-        this.playSound("mob.villager.yes", this.getSoundVolume(), this.getSoundPitch());
+        //this.playSound("mob.villager.yes", this.getSoundVolume(), 4.F);
         int i = 3 + this.rand.nextInt(4);
 
         if (recipe.getToolUses() == 1 || this.rand.nextInt(5) == 0)

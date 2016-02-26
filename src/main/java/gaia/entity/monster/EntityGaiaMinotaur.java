@@ -113,7 +113,7 @@ public class EntityGaiaMinotaur extends EntityMobBase {
 						this.posZ + ((double)this.rand.nextFloat() - 0.5D) * (double)this.width, 4.0D * ((double)this.rand.nextFloat() - 0.5D), 0.5D,
 						((double)this.rand.nextFloat() - 0.5D) * 4.0D,
 						crackid,crackmeta);
-						;
+						
 				
 				
 			}
@@ -139,15 +139,15 @@ public class EntityGaiaMinotaur extends EntityMobBase {
 	}
 
 	protected String getLivingSound() {
-		return "gaia:minotaur_say";
+		return "grimoireofgaia:minotaur_say";
 	}
 
 	protected String getHurtSound() {
-		return "gaia:minotaur_hurt";
+		return "grimoireofgaia:minotaur_hurt";
 	}
 
 	protected String getDeathSound() {
-		return "gaia:minotaur_hurt";
+		return "grimoireofgaia:minotaur_hurt";
 	}
 
 	protected void playStepSound(int par1, int par2, int par3, int par4) {
@@ -189,8 +189,7 @@ public class EntityGaiaMinotaur extends EntityMobBase {
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
-		//TODO Propweapons
-		//TODO this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeaponInvisible));
+		this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeaponInvisible));
 		this.setEnchantmentBasedOnDifficulty(difficulty);
 		return livingdata;		
 		

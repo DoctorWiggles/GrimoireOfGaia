@@ -117,8 +117,7 @@ public class EntityGaiaSiren extends EntityMobDay implements IRangedAttackMob {
 		}
 		
 		if ((this.getHealth() < EntityAttributes.maxHealth1 * 0.25F) && (this.switchHealth == 0)) {
-			//TODO propweapon
-            //TODO this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeapon, 1, 3));
+			this.setCurrentItemOrArmor(0, new ItemStack(GaiaItem.PropWeapon, 1, 3));
 			this.tasks.removeTask(this.aiArrowAttack);
 			this.tasks.addTask(1, this.aiAttackOnCollide);
 			this.switchHealth = 1;
@@ -135,15 +134,15 @@ public class EntityGaiaSiren extends EntityMobDay implements IRangedAttackMob {
 	}
 
 	protected String getLivingSound() {
-		return "gaia:aggressive_say";
+		return "grimoireofgaia:aggressive_say";
 	}
 
 	protected String getHurtSound() {
-		return "gaia:aggressive_hurt";
+		return "grimoireofgaia:aggressive_hurt";
 	}
 
 	protected String getDeathSound() {
-		return "gaia:aggressive_death";
+		return "grimoireofgaia:aggressive_death";
 	}
 
 	protected void dropFewItems(boolean par1, int par2) {

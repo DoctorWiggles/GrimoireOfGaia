@@ -34,15 +34,15 @@ public class ItemSpawnCardHolstaurus extends Item {
 		par3List.add(StatCollector.translateToLocal("item.GrimoireOfGaia.SpawnHolstaurus.desc"));
 	}
 
-	public ItemStack onEaten(ItemStack par1ItemStack, World world, EntityPlayer entityplayer) {
+	public ItemStack onItemUseFinish(ItemStack par1ItemStack, World world, EntityPlayer entityplayer) {
 		if(!entityplayer.capabilities.isCreativeMode) {
 			--par1ItemStack.stackSize;
 		}
 
-		world.playSoundAtEntity(entityplayer, "gaia:book_hit", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+		world.playSoundAtEntity(entityplayer, "grimoireofgaia:book_hit", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 		if(!world.isRemote) {
 			EntityGaiaNPCHolstaurus entityspawning = new EntityGaiaNPCHolstaurus(world);
-			entityspawning.setPosition(entityplayer.posX + 0.0D, entityplayer.posY + 0.0D, entityplayer.posZ + 0.0D);
+			entityspawning.setLocationAndAngles(entityplayer.posX + 0.5, entityplayer.posY, entityplayer.posZ + 0.5, 0,0); 
 			world.spawnEntityInWorld(entityspawning);
 		}
 
@@ -61,8 +61,4 @@ public class ItemSpawnCardHolstaurus extends Item {
 		par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 		return par1ItemStack;
 	}
-
-	/*public void registerIcons(IIconRegister iconRegister) {
-		this.itemIcon = iconRegister.registerIcon("gaia:" + this.texture);
-	}*/
 }

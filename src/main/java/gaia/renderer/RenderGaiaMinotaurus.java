@@ -2,8 +2,10 @@ package gaia.renderer;
 
 import org.lwjgl.opengl.GL11;
 
+import gaia.GaiaReference;
 import gaia.entity.monster.EntityGaiaMinotaurus;
 import gaia.model.ModelGaiaMinotaurus;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
@@ -12,11 +14,13 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderGaiaMinotaurus extends RenderLiving {
 
-	private static final ResourceLocation texture01 = new ResourceLocation("gaia", "textures/models/Minotaurus01.png");
-	private static final ResourceLocation texture02 = new ResourceLocation("gaia", "textures/models/alternate/Minotaurus02.png");
-
-	public RenderGaiaMinotaurus(RenderManager renderManager, ModelGaiaMinotaurus model, float shadowSize) {
-        super(renderManager, model, shadowSize);
+	private static final ResourceLocation texture01 = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Minotaurus01.png");
+	private static final ResourceLocation texture02 = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/alternate/Minotaurus02.png");
+	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
+	
+	public RenderGaiaMinotaurus( float shadowSize) {
+        super(rend, new ModelGaiaMinotaurus(), shadowSize);
+        this.addLayer(new held_rightarm(this, ModelGaiaMinotaurus.rightarm));
 	}
 
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {

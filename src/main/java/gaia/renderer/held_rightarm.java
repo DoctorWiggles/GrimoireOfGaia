@@ -2,8 +2,6 @@ package gaia.renderer;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
@@ -28,7 +26,6 @@ public class held_rightarm implements LayerRenderer<EntityLivingBase>
     ModelRenderer rightarm;
     /** The Entity's Renderer **/
     private final RendererLivingEntity<?> livingEntityRenderer;
-        
     
     /**
      * [ Render Item being held in entity's right arm ]
@@ -41,7 +38,7 @@ public class held_rightarm implements LayerRenderer<EntityLivingBase>
         this.livingEntityRenderer = livingEntityRendererIn;
         this.rightarm = limb;
     }
-    
+        
 
     /** The Actual rendering code**/
     public void doRenderLayer(EntityLivingBase entity, float p_177141_2_, float p_177141_3_, float partialTicks, float p_177141_5_, float p_177141_6_, float p_177141_7_, float scale)
@@ -51,6 +48,7 @@ public class held_rightarm implements LayerRenderer<EntityLivingBase>
         if (itemstack != null)
         {
             GlStateManager.pushMatrix();
+            
 
             if (this.livingEntityRenderer.getMainModel().isChild)
             {
@@ -64,6 +62,7 @@ public class held_rightarm implements LayerRenderer<EntityLivingBase>
             //((base_held)this.livingEntityRenderer.getMainModel()).postRenderArm(0.0625F);    
             rightarm.postRender(0.0625F);            
             GlStateManager.translate(-0.0625F, 0.4375F, 0.0625F);
+            
 
             if (entity instanceof EntityPlayer && ((EntityPlayer)entity).fishEntity != null)
             {
@@ -91,8 +90,8 @@ public class held_rightarm implements LayerRenderer<EntityLivingBase>
             if (entity.isSneaking())
             {
                 GlStateManager.translate(0.0F, 0.203125F, 0.0F);
-            }
-
+            }            
+            
             minecraft.getItemRenderer().renderItem(entity, itemstack, ItemCameraTransforms.TransformType.THIRD_PERSON);
             GlStateManager.popMatrix();
         }

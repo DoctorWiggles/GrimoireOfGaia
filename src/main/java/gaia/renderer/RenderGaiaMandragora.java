@@ -2,8 +2,10 @@ package gaia.renderer;
 
 import org.lwjgl.opengl.GL11;
 
+import gaia.GaiaReference;
 import gaia.entity.monster.EntityGaiaMandragora;
 import gaia.model.ModelGaiaMandragora;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
@@ -12,13 +14,15 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderGaiaMandragora extends RenderLiving {
 
-	private static final ResourceLocation texture = new ResourceLocation("gaia", "textures/models/Mandragora.png");
-
-	public RenderGaiaMandragora(RenderManager renderManager, ModelGaiaMandragora model, float shadowSize) {
-        super(renderManager, model, shadowSize);
+	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Mandragora.png");
+	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
+	
+	public RenderGaiaMandragora( float shadowSize) {
+        super(rend, new ModelGaiaMandragora(), shadowSize);
 		//this.setRenderPassModel(new ModelGaiaMandragora());
 	}
 
+	/**Wait what, why was this ever here - the entity doesn't even have an item to hold **/
 	/*protected void renderEquippedItems(EntityLivingBase par1EntityLiving, float par2) {
 		float var3 = 1.0F;
 		GL11.glColor3f(var3, var3, var3);

@@ -2,26 +2,22 @@ package gaia.renderer;
 
 import org.lwjgl.opengl.GL11;
 
+import gaia.GaiaReference;
 import gaia.entity.monster.EntityGaiaDhampir;
 import gaia.model.ModelGaiaDhampir;
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.MinecraftForgeClient;
 
 public class RenderGaiaDhampir extends RenderLiving<EntityGaiaDhampir> {
 	
-	private static final ResourceLocation dhampirEyesTexture = new ResourceLocation("gaia", "textures/models/eyes/Eyes_Dhampir.png");
-	private static final ResourceLocation texture = new ResourceLocation("gaia", "textures/models/Dhampir.png");
-
+	private static final ResourceLocation dhampirEyesTexture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/eyes/Eyes_Dhampir.png");
+	private static final ResourceLocation texture = new ResourceLocation(GaiaReference.MOD_ID, "textures/models/Dhampir.png");
 	static RenderManager rend = Minecraft.getMinecraft().getRenderManager();
+	
 	public RenderGaiaDhampir(float shadowSize) {
         super(rend, new ModelGaiaDhampir(), shadowSize);
         this.addLayer(new held_rightarm(this, ModelGaiaDhampir.rightarm));
@@ -88,7 +84,7 @@ public class RenderGaiaDhampir extends RenderLiving<EntityGaiaDhampir> {
 	protected void func_82422_c() {
 		GL11.glTranslatef(0.0F, 0.1875F, 0.0F);
 	}	
-
+	/*
 	protected int shouldRenderPass(EntityGaiaDhampir par1EntityGaiaDhampir, int par2, float par3) {
 		if (par1EntityGaiaDhampir.isInvisible()) {
 			return 0;
@@ -121,6 +117,7 @@ public class RenderGaiaDhampir extends RenderLiving<EntityGaiaDhampir> {
 	protected int shouldRenderPass(EntityLivingBase par1EntityLiving, int par2, float par3) {
 		return this.shouldRenderPass((EntityGaiaDhampir)par1EntityLiving, par2, par3);
 	}
+	*/
 
 	protected ResourceLocation getEntityTexture(EntityGaiaDhampir entity) {
 		return texture;
