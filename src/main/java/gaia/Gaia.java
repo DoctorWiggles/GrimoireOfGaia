@@ -80,7 +80,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 @Mod(
 		modid = "GrimoireOfGaia",
 		name = "Grimoire of Gaia 3",
-		version = "1.0.0"
+		version = "1.2.8",
+		dependencies="after:HardcoreEnderExpansion"
 		)
 /*
 @NetworkMod(
