@@ -1,6 +1,7 @@
 package gaia.init;
 
 import gaia.Gaia;
+import gaia.entity.monster.EntityDebugMob;
 import gaia.entity.monster.EntityGaiaAnt;
 import gaia.entity.monster.EntityGaiaAnubis;
 import gaia.entity.monster.EntityGaiaArachne;
@@ -126,7 +127,7 @@ public class GaiaEntity {
 		Register(EntityGaiaYeti.class, 				"Yeti", 			48, 16448250, 7895160);
 		Register(EntityGaiaYukiOnna.class, 			"Yuki-Onna",		49, 6781114, 13817330);
 		
-		//Register(EntityDebugMob.class, 			"DebugMob", 		200, 0x6fa289, 0x915741);
+		Register(EntityDebugMob.class, 			"DebugMob", 		200, 0x6fa289, 0x915741);
 
 		//NPC
 		Register(EntityGaiaNPCCreeperGirl.class, 	"CreeperGirl", 		61 );
