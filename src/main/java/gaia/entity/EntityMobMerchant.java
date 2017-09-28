@@ -26,6 +26,7 @@ import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.village.Village;
 import net.minecraft.world.World;
 
+//Adapted from DivineRPG code
 public abstract class EntityMobMerchant extends EntityVillager implements INpc, IMerchant {
 	private int randomTickDivider;
 	private Village villageObj;
@@ -38,8 +39,8 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 	private String buyersName;
 	private float buying;
 
-	public EntityMobMerchant(World var1) {
-		super(var1);
+	public EntityMobMerchant(World worldIn) {
+		super(worldIn);
 		this.randomTickDivider = 0;
 		this.villageObj = null;
 	}
@@ -58,80 +59,21 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 	}
 
 	@Override
-	protected SoundEvent getAmbientSound(){
+	protected SoundEvent getAmbientSound() {
 		return null;
 	}
 
 	@Override
-	protected SoundEvent getDeathSound(){
+	protected SoundEvent getDeathSound() {
 		return null;
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(){
+	protected SoundEvent getHurtSound() {
 		return null;
 	}
-	/* TODO check
-	@Override
-	protected void updateAITick() {
-		if (this.randomTickDivider-- <= 0) {
-			this.randomTickDivider = 70 + this.rand.nextInt(50);
-			this.villageObj = this.worldObj.villageCollectionObj.getNearestVillage(this.getPosition(), 32);
-			if (this.villageObj == null) {
-				this.detachHome();
-			} else {
-				this.villageObj.setDefaultPlayerReputation(30);
-			}
-		}
-
-		if (this.timeUntilReset > 0) {
-			if (this.timeUntilReset <= 0) {
-				if (this.buyingList.size() > 1) {
-					Iterator iterator = this.buyingList.iterator();
-					if (needsInitilization){
-						while (iterator.hasNext()) {
-							MerchantRecipe merchantrecipe = (MerchantRecipe)iterator.next();
-							if (merchantrecipe.isRecipeDisabled()) {
-								merchantrecipe.increaseMaxTradeUses(this.rand.nextInt(6) + this.rand.nextInt(6) + 2);
-							}
-						}
-					}
-					this.addDefaultEquipmentAndRecipies(75);
-					this.needsInitilization = false;
-					if (this.villageObj != null && this.lastBuyingPlayer != null) {
-						this.villageObj.setReputationForPlayer(this.lastBuyingPlayer, 30);
-					}
-				}
-				this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200, 0));
-			}
-		}
-		super.updateAITick();
-	}
-	*/
-	/* TODO check
-	@Override
-	public boolean interact(EntityPlayer player) {
-		ItemStack var2 = player.inventory.getCurrentItem();
-		boolean var3 = var2 != null && var2.getItem() == Items.SPAWN_EGG;
-		if (!var3 && this.isEntityAlive() && !this.isTrading() && !this.isChild()) {
-			if (!this.worldObj.isRemote) {
-				this.setCustomer(player);
-				String name = this.getCustomNameTag();
-				if (null == name || name.length() < 1) {
-					name = this.getCommandSenderEntity().getName();
-				}
-
-				player.displayVillagerTradeGui(this);
-			}
-
-			return true;
-		} else {
-			return super.interact(player);
-		}
-	}
-	*/
-	public boolean processInteract(EntityPlayer player, EnumHand hand, @Nullable ItemStack stack)
-    {
+	
+	public boolean processInteract(EntityPlayer player, EnumHand hand, @Nullable ItemStack stack) {
         boolean flag = stack != null && stack.getItem() == Items.SPAWN_EGG;
 
         if (!flag && this.isEntityAlive() && !this.isTrading() && !this.isChild() && !player.isSneaking())
@@ -176,7 +118,7 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 
 		if (var1.hasKey("Offers")) {
 			NBTTagCompound var2 = var1.getCompoundTag("Offers");
-			if (this instanceof EntityGaiaNPCCreeperGirl || this instanceof EntityGaiaNPCEnderGirl || this instanceof EntityGaiaNPCHolstaurus || this instanceof EntityGaiaNPCSlimeGirl || this instanceof EntityGaiaNPCTrader) this.buyingList = new TradeList(var2);
+			if (this instanceof EntityGaiaNPCCreeperGirl || this instanceof EntityGaiaNPCEnderGirl || this instanceof EntityGaiaNPCHolstaurus || this instanceof EntityGaiaNPCSlimeGirl || this instanceof EntityGaiaNPCTrader) this.buyingList = new GaiaTradeList(var2);
 			else this.buyingList = new MerchantRecipeList(var2);
 		}
 	}
@@ -218,6 +160,7 @@ public abstract class EntityMobMerchant extends EntityVillager implements INpc, 
 		if (this.buyingList == null) {
 			this.addDefaultEquipmentAndRecipies(75);
 		}
+		
 		return this.buyingList;
 	}
 

@@ -4,33 +4,25 @@ import gaia.Gaia;
 
 import java.util.List;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional.Interface;
-import net.minecraftforge.fml.common.Optional.InterfaceList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@InterfaceList({
-	@Interface(iface="baubles.api.IBauble", modid="Baubles", striprefs=true),
-	@Interface(iface="baubles.api.BaubleType", modid="Baubles", striprefs=true)})
+import org.lwjgl.input.Keyboard;
 
-public class ItemAccessoryRingNight extends Item //implements IBauble
-{
-
+public class ItemAccessoryRingNight extends ItemAccessoryRing {
+	
 	public ItemAccessoryRingNight(String name) {
-		this.setMaxStackSize(1);
 		this.setUnlocalizedName(name);
 		this.setCreativeTab(Gaia.tabGaia);
 	}
-
+	
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack stack) {
 		return true;
@@ -38,58 +30,26 @@ public class ItemAccessoryRingNight extends Item //implements IBauble
 
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack stack) {
-		return EnumRarity.EPIC;
+		return EnumRarity.RARE;
 	}
 
-	public void addInformation(ItemStack stack, EntityPlayer player, List par3List, boolean par4) {
-		par3List.add(I18n.translateToLocal("effect.nightVision"));
-	}
-
-	public void onUpdate(ItemStack stack, World world, Entity par3Entity, int par4, boolean par5) {
-		super.onUpdate(stack, world, par3Entity, par4, par5);
-		EntityPlayer player = (EntityPlayer)par3Entity;
-
-		for (int i = 0; i < 9; ++i) {
-			if (player.inventory.getStackInSlot(i) == stack) {
-				this.doEffect(player, stack);
-				break;
-			}
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		boolean shiftPressed = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
+		tooltip.add(TextFormatting.YELLOW + (I18n.translateToLocal("text.GrimoireOfGaia.Accessory.tag")));
+		
+		if (shiftPressed) {
+			tooltip.add(TextFormatting.YELLOW + (I18n.translateToLocal("text.GrimoireOfGaia.InventoryAccessory")));
+			tooltip.add(I18n.translateToLocal("effect.nightVision"));
+		} else {
+			tooltip.add(TextFormatting.ITALIC + (I18n.translateToLocal("text.GrimoireOfGaia.HoldShift")));
 		}
 	}
 
+	@Override
 	public void doEffect(EntityPlayer player, ItemStack item) {	
 		if (!player.isPotionActive(MobEffects.NIGHT_VISION)) {
-			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 60, 0, true, false));		
-			}
+			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 10 * 20, 0, true, false));		
+		}
 	}
-	/*
-	@Override
-	public BaubleType getBaubleType(ItemStack itemstack) {
-		return BaubleType.RING;
-	}
-
-	@Override
-	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		
-		this.doEffect((EntityPlayer)player, itemstack);	
-	}
-
-	@Override
-	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {}
-
-	@Override
-	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-		player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 20, 0));
-	}
-
-	@Override
-	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-	*/
 }

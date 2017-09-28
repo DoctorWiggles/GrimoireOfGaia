@@ -26,9 +26,10 @@ public class ItemMiscCurrency extends Item {
 		return EnumRarity.UNCOMMON;
 	}
 	
-	public void addInformation(ItemStack stack, EntityPlayer player, List par3List, boolean par4) {
-		if (stack.getItemDamage() == 3) {
-			par3List.add(I18n.translateToLocal("item.GrimoireOfGaia.MiscCurrency.desc"));
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		if (stack.getItemDamage() == 0) {
+			tooltip.add(I18n.translateToLocal("item.GrimoireOfGaia.MiscCurrency.desc"));
 		}
 	}
 	

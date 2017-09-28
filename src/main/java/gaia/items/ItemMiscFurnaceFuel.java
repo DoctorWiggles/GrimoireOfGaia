@@ -8,7 +8,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+//TODO Remove/Phase out
 public class ItemMiscFurnaceFuel extends Item {
 
 	public ItemMiscFurnaceFuel(String name) {
@@ -16,7 +19,8 @@ public class ItemMiscFurnaceFuel extends Item {
 		this.setCreativeTab(Gaia.tabGaia);
 	}
 
-	public void addInformation(ItemStack stack, EntityPlayer player, List par3List, boolean par4) {
-		par3List.add(I18n.translateToLocalFormatted("text.GrimoireOfGaia.FuelForSeconds", new Object[]{Integer.valueOf(180)}));
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		tooltip.add(I18n.translateToLocalFormatted("text.GrimoireOfGaia.FuelForSeconds", new Object[]{Integer.valueOf(180)}));
 	}
 }

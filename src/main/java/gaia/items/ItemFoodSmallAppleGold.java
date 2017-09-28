@@ -17,8 +17,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemFoodSmallAppleGold extends ItemFood {
 
-	public ItemFoodSmallAppleGold(int par2, float par3, boolean par4, String name) {
-		super(par2, par3, par4);
+	public ItemFoodSmallAppleGold(int amount, float saturation, boolean isWolfFood, String name) {
+		super(amount, saturation, isWolfFood);
 		this.maxStackSize = 64;
 		this.setUnlocalizedName(name);
 		this.setCreativeTab(Gaia.tabGaia);
@@ -29,11 +29,12 @@ public class ItemFoodSmallAppleGold extends ItemFood {
 		return EnumRarity.UNCOMMON;
 	}
 
-	public void addInformation(ItemStack stack, EntityPlayer player, List par3List, boolean par4) {
-		par3List.add(I18n.translateToLocal("effect.absorption") + " (2:00)");
-		par3List.add(I18n.translateToLocal("effect.regeneration") + " (IV)" + " (0:04)");
-		par3List.add(I18n.translateToLocal("effect.resistance") + " (0:50)");
-		par3List.add(I18n.translateToLocal("effect.fireResistance") + " (0:50)");
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		tooltip.add(I18n.translateToLocal("effect.absorption") + " (2:00)");
+		tooltip.add(I18n.translateToLocal("effect.regeneration") + " (IV)" + " (0:04)");
+		tooltip.add(I18n.translateToLocal("effect.resistance") + " (0:50)");
+		tooltip.add(I18n.translateToLocal("effect.fireResistance") + " (0:50)");
 	}
 
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {

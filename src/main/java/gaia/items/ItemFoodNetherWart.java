@@ -9,11 +9,13 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemFoodNetherWart extends Gaia_FoodItem {
+public class ItemFoodNetherWart extends GaiaItemFood {
 
-	public ItemFoodNetherWart(int par2, float par3, boolean par4, String name) {
-		super(par2, par3, par4);
+	public ItemFoodNetherWart(int amount, float saturation, boolean isWolfFood, String name) {
+		super(amount, saturation, isWolfFood);
 		this.setUnlocalizedName(name);
 		this.setCreativeTab(Gaia.tabGaia);
 		
@@ -21,9 +23,9 @@ public class ItemFoodNetherWart extends Gaia_FoodItem {
 		this.setSecondPotionEffect(new PotionEffect(MobEffects.HASTE, 30, 0), 0.4F);
 	}
 	
-	public void addInformation(ItemStack stack, EntityPlayer player, List par3List, boolean par4) {
-		par3List.add("(40%) " + I18n.translateToLocal("effect.moveSpeed") + " (0:30)");
-		par3List.add("(40%) " + I18n.translateToLocal("effect.digSpeed") + " (0:30)");
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		tooltip.add("(40%) " + I18n.translateToLocal("effect.moveSpeed") + " (0:30)");
+		tooltip.add("(40%) " + I18n.translateToLocal("effect.digSpeed") + " (0:30)");
 	}
-
 }

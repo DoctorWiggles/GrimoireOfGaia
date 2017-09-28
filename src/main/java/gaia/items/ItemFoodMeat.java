@@ -5,8 +5,8 @@ import net.minecraft.item.ItemFood;
 
 public class ItemFoodMeat extends ItemFood {
 
-	public ItemFoodMeat(int par2, float par3, boolean par4, String name) {
-		super(par2, par3, par4);
+	public ItemFoodMeat(int amount, float saturation, boolean isWolfFood, String name) {
+		super(amount, saturation, isWolfFood);
 		this.setUnlocalizedName(name);
 		this.setCreativeTab(Gaia.tabGaia);
 	}

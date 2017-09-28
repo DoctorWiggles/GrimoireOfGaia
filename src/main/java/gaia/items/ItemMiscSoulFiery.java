@@ -19,7 +19,12 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * @see ItemFlintAndSteel
+ */
 public class ItemMiscSoulFiery extends Item {
 
 	public ItemMiscSoulFiery(String name) {
@@ -27,14 +32,13 @@ public class ItemMiscSoulFiery extends Item {
 		this.setCreativeTab(Gaia.tabGaia);
 	}
 
-	public void addInformation(ItemStack stack, EntityPlayer player, List par3List, boolean par4) {
-		par3List.add(I18n.translateToLocalFormatted("text.GrimoireOfGaia.FuelForSeconds", new Object[]{Integer.valueOf(1000)}));
-		par3List.add(I18n.translateToLocal("item.GrimoireOfGaia.MiscSoulFiery.desc"));
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		tooltip.add(I18n.translateToLocalFormatted("text.GrimoireOfGaia.FuelForSeconds", new Object[]{Integer.valueOf(1000)}));
+		tooltip.add(I18n.translateToLocal("item.GrimoireOfGaia.MiscSoulFiery.desc"));
 	}
 	
-	
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
-	{
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		IBlockState iblockstate = world.getBlockState(pos);
         Block block = iblockstate.getBlock();
 
