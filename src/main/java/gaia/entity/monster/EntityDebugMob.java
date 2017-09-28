@@ -2,6 +2,7 @@ package gaia.entity.monster;
 
 import gaia.entity.EntityAttributes;
 import gaia.entity.EntityMobHostileDay;
+import gaia.entity.ai.EntityAIGaiaLeapAtTarget;
 import gaia.renderer.particle.ParticleExample;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -15,10 +16,15 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -41,6 +47,7 @@ import java.util.Random;
 public class EntityDebugMob extends EntityMobHostileDay {
 
     private static int manual_clock;
+    private EntityAIGaiaLeapAtTarget aiGaiaLeapAtTarget = new EntityAIGaiaLeapAtTarget(this, 0.4F);
 
     public EntityDebugMob(World par1World) {
         super(par1World);
@@ -48,14 +55,19 @@ public class EntityDebugMob extends EntityMobHostileDay {
         this.experienceValue = EntityAttributes.experienceValue1;
         this.stepHeight = 1.0F;
         this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(0, this.aiGaiaLeapAtTarget);
         this.tasks.addTask(1, new EntityAIAttackMelee(this, EntityAttributes.attackSpeed1, true));
         this.tasks.addTask(2, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(3, new EntityAILookIdle(this));
+        
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 
         this.timer = 20; // timer
         this.manual_clock = 0;
+        
+        /** Server  data setup **/
+		this.sitting = false;
     }
 
     protected void applyEntityAttributes() {
@@ -65,7 +77,7 @@ public class EntityDebugMob extends EntityMobHostileDay {
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE)
                 .setBaseValue(EntityAttributes.followrange);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED)
-                .setBaseValue((double) EntityAttributes.moveSpeed1);
+                .setBaseValue((double) EntityAttributes.moveSpeed1*0.9);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE)
                 .setBaseValue((double) EntityAttributes.attackDamage1);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR)
@@ -108,7 +120,38 @@ public class EntityDebugMob extends EntityMobHostileDay {
             }
         }
          */
-
+        
+        /** Testing modifying server and client nbt data **/
+		if (this.clock()) {
+			if(this.sitting == true)
+			{
+				//Server data
+				sitting = false;	
+				//Client Data
+				setSitting(false);
+				
+				
+				this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.STONE_SHOVEL));
+				this.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, new ItemStack(Items.BOW));	
+				this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED)
+                .setBaseValue((double) EntityAttributes.moveSpeed1*0.9);
+				this.tasks.removeTask(this.aiGaiaLeapAtTarget);
+				
+			}	
+			else if(this.sitting == false)
+			{					
+				sitting = true;					
+				setSitting(true);
+				
+				
+				this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, ItemStack.EMPTY);
+				this.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, ItemStack.EMPTY);	
+				this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED)
+                .setBaseValue((double) EntityAttributes.moveSpeed1*1.5);
+				this.tasks.addTask(0, this.aiGaiaLeapAtTarget);
+			}					
+		}	
+		
         // Example of generating a custom particle
         if (!this.world.isRemote && rand.nextInt(200) == 0) {
             BlockPos pos = this.getPosition();
@@ -132,7 +175,7 @@ public class EntityDebugMob extends EntityMobHostileDay {
 
         /** We could setup multiples to work in conjunction via randoms and more control statements 
          * Or we could just use the control statements to adjust the chance the mob would attempt to drop something from that pool**/
-        // TODO this does not seem to work with ENTITY LootTables
+        //a
         //if(this.rand.nextInt(4) == 2)drop_A_Random_Loot_From_LootTable(LootTableList.ENTITIES_BLAZE, wasRecentlyHit, lootingModifier, source);
 
         /** Our legacy method to handle our other mob drops **/
@@ -216,30 +259,55 @@ public class EntityDebugMob extends EntityMobHostileDay {
 
     //================= Clock to prevent effect being spammed =================//
     public boolean clock() {
-        this.timer++;
-        if (this.timer > 600) {
-            this.timer = 0;
-            return true;
-        }
-        return false;
-    };
+		this.timer++;
+		if (this.timer >100) {
+			this.timer = 0;
+			return true;
+		}
+		return false;
+	};
 
-    short timer;
+	/** Server Side NBT Data **/
+	short timer;	
+	boolean sitting;
+	
+	public void readEntityFromNBT(NBTTagCompound tag) {
+		super.readEntityFromNBT(tag);
+		if (tag.hasKey("Timer")) {
+			short db0 = tag.getShort("Timer");
+		}
+		if (tag.hasKey("Sitting")) {
+			boolean db1 = tag.getBoolean("Sitting");
+		}
+	}
 
-    /**
-     * Data for Clock
-     */
-    public void readEntityFromNBT(NBTTagCompound tag) {
-        super.readEntityFromNBT(tag);
-        if (tag.hasKey("Timer")) {
-            short b0 = tag.getShort("Timer");
-        }
-    }
-
-    public void writeEntityToNBT(NBTTagCompound tag) {
-        super.writeEntityToNBT(tag);
-        tag.setShort("Timer", this.timer);
-    }
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		super.writeEntityToNBT(tag);
+		tag.setShort("Timer", this.timer);
+		tag.setBoolean("Sitting", this.sitting);
+	}	
+	
+	/** NBT Data that the client can access **/
+	//Create the client key
+	private static final DataParameter<Boolean> SITTING 
+		= EntityDataManager.<Boolean>createKey(EntityDebugMob.class, DataSerializers.BOOLEAN);
+	
+	//Initialize the client key
+	protected void entityInit()
+    {
+        super.entityInit();
+        this.dataManager.register(SITTING, Boolean.valueOf(false));
+    }		
+	
+	//Retreive the client data
+	public boolean getSitting(){
+		return ((Boolean)this.dataManager.get(SITTING)).booleanValue();
+	}
+	
+	//Set the client data  
+	public void setSitting(boolean flag){
+		this.dataManager.set(SITTING, flag);
+	}
 
     // ================= Bunch of mundane things below =================//
     protected SoundEvent getAmbientSound() {

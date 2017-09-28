@@ -2,6 +2,7 @@ package gaia.init;
 
 import gaia.Gaia;
 import gaia.GaiaReference;
+import gaia.entity.monster.EntityDebugMob;
 import gaia.entity.monster.EntityGaiaAnt;
 import gaia.entity.monster.EntityGaiaAnubis;
 import gaia.entity.monster.EntityGaiaArachne;
@@ -158,6 +159,9 @@ public class GaiaEntities {
     public static EntityEntry WITHER_COW = createEntityEntry("WitherCow", EntityGaiaWitherCow.class, 5791069, 16777215);
     public static EntityEntry YETI = createEntityEntry("Yeti", EntityGaiaYeti.class, 16448250, 7895160);
     public static EntityEntry YUKI_ONNA = createEntityEntry("Yuki-Onna", EntityGaiaYukiOnna.class, 6781114, 13817330);
+    
+    public static EntityEntry DEBUGMOB = createEntityEntry("DebugMob", EntityDebugMob.class, 0x8d4f41, 7715172);
+
 
     // NPC
     public static EntityEntry CREEPER_GIRL = createEntityEntry("CreeperGirl", EntityGaiaNPCCreeperGirl.class);

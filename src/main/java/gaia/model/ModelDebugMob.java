@@ -1,6 +1,8 @@
 package gaia.model;
 
+import gaia.entity.monster.EntityDebugMob;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -191,36 +193,40 @@ public class ModelDebugMob extends ModelGaia {
 
     public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
         super.render(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+        
         this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
-        this.head.render(scale);
-        this.headaccessory.render(scale);
-        this.neck.render(scale);
-        this.bodytop.render(scale);
-        this.bodymiddle.render(scale);
-        this.bodymiddlebutton.render(scale);
-        this.bodybottom.render(scale);
-        this.rightarm.render(scale);
-        this.leftarm.render(scale);
-        this.rightleg.render(scale);
-        this.leftleg.render(scale);
-        // this.headleaf.render(scale);
-        // this.hair.render(scale);
-        // this.ears.render(scale);
-        // this.backpack.render(scale);
-        // this.bodycover.render(scale);
-        // this.rightarmcloth.render(scale);
-        // this.leftarmcloth.render(scale);
-        this.tail1.render(scale);
-        // this.tail2.render(scale);
-        // this.tail3.render(scale);
-        // this.rightlegcloth.render(scale);
-        // this.rightlegclothlower.render(scale);
-        // this.leftlegcloth.render(scale);
-        // this.leftlegclothlower.render(scale);
-
-        if (entityIn.ticksExisted % 60 == 0 && limbSwingAmount <= 0.1F) {
-            this.headeyes.render(scale);
-        }
+      
+        //offset
+  		//Switch triggering from client data changing
+  		EntityDebugMob mob = (EntityDebugMob)entityIn;
+  		if (mob.getSitting())
+  		{			
+  			GlStateManager.pushMatrix();
+  			GlStateManager.translate(0.0F, 10.0F * scale, 0.0F);
+  			GlStateManager.rotate(70F, 70, 0, 0);		
+  		}
+  		
+          this.head.render(scale);
+      	this.headaccessory.render(scale);
+      	this.neck.render(scale);
+      	this.bodytop.render(scale);
+      	this.bodymiddle.render(scale);
+      	this.bodymiddlebutton.render(scale);
+      	this.bodybottom.render(scale);
+      	this.rightarm.render(scale);
+      	this.leftarm.render(scale);
+      	this.rightleg.render(scale);
+      	this.leftleg.render(scale);
+      	this.tail1.render(scale);
+  		
+  		if (entityIn.ticksExisted % 60 == 0 && limbSwingAmount <= 0.1F) {
+  			this.headeyes.render(scale);
+  		} 
+  		
+  		if (mob.getSitting())
+  		{	
+  			GlStateManager.popMatrix();
+  		}
     }
 
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor,
@@ -261,6 +267,22 @@ public class ModelDebugMob extends ModelGaia {
         // legs
         this.rightleg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 0.1F * limbSwingAmount;
         this.leftleg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 0.1F * limbSwingAmount;
+    
+        //Important Casting call
+      	EntityDebugMob mob = (EntityDebugMob)entityIn;
+      		
+      		
+        //Switch triggering from client data changing
+  		if (mob.getSitting())
+  	    {	
+  			this.rightleg.rotateAngleX = this.rightleg.rotateAngleX -190;
+  			this.leftleg.rotateAngleX = this.leftleg.rotateAngleX -70;
+  			this.head.rotateAngleX = this.head.rotateAngleX -70;
+  			this.headeyes.rotateAngleX = this.head.rotateAngleX;
+  			this.headaccessory.rotateAngleX = this.head.rotateAngleX;
+  			this.rightarm.rotateAngleX = this.rightarm.rotateAngleX -190;
+  			this.leftarm.rotateAngleX = this.leftarm.rotateAngleX -8;
+  	     }
     }
 
     /*
