@@ -274,10 +274,10 @@ public class EntityDebugMob extends EntityMobHostileDay {
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
 		if (tag.hasKey("Timer")) {
-			short db0 = tag.getShort("Timer");
+			this.timer = tag.getShort("Timer");
 		}
 		if (tag.hasKey("Sitting")) {
-			boolean db1 = tag.getBoolean("Sitting");
+			this.sitting = tag.getBoolean("Sitting");
 		}
 	}
 
